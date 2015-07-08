@@ -24,4 +24,6 @@ before_install:
   - git remote -v | grep ^openshift || git remote add openshift $OPENSHIFT_REPO
   
 after_success:
+  - rvm gemset use global
+  - gem install rhc
   - git push -f openshift $BRANCH:master
