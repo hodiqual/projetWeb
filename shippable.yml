@@ -26,5 +26,5 @@ before_install:
   - git remote -v | grep ^openshift || git remote add openshift $OPENSHIFT_REPO
   
 after_success:
-  - rhc setup
+  - rhc apps --token 3a1b69d243d99014162155f17cf4be44ff921947da2b120000c9fbe0a42fb82d
   - git push -f openshift $BRANCH:master
