@@ -1,3 +1,5 @@
+
+<b>COUCOU    SURF EN FOLIE !!!! </b>
 <?php
  
 // Affiche toutes les informations, comme le ferait INFO_ALL
@@ -12,4 +14,4 @@ phpinfo(INFO_MODULES);
 <br/>
 <br/>
 
-<b>COUCOU</b>
+
