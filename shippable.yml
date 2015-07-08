@@ -9,8 +9,7 @@ php:
   - hhvm
   
 env:
-    - secure: HQP9QVUekPyMddKgyjMVmA6jdXG8QnNkeOp6YIqpbeoxBg59G8qbcKysM6hkUWKG9VI+q/TKn1eW3Jls4j/n6IVrSnFHfhNtwnUXbBsLJZl7mLRiQCiRufxnTWEIucparYHqsJnlu4SGUSFoHwoiqWeXOKAN+24yDJUa81Q9ZRYTbLT/EZmiHS9penZJxLYjSXUrUSiJBNqAGxrt8B9mxISP+L2GQg2YQm+gZYKs0sw2PoHptvqUdoDU8/EptXBMP+HnwsCJdesK39HKg8b+xoJM20wmTahz+Sx45Yzwsx83M6Qb1zSXt3D2fFeewTNZIcA2MvNbELj4gRWU+y3JQQ==
-global:
+  global:
     - OPENSHIFT_REPO=ssh://559d9688e0b8cd1eaa000051@surf-iessa.rhcloud.com/~/git/surf.git
 
 
