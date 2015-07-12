@@ -87,6 +87,8 @@ function ecrireHead()
 	
 	</head>
 	
+	<body>
+	
 	<?php
 }
 
@@ -168,6 +170,71 @@ function ecrireFooter()
 	
 	</body>
 	</html>
+<?php
+}
+?>
+
+<?php 
+function ecrireSlider()
+{
+?>
+	<!-- This section is for Splash Screen -->
+	<div class="ole">
+	<section id="jSplash">
+		<div id="circle"></div>
+	</section>
+	</div>
+	<!-- End of Splash Screen -->
+	
+	<!-- Homepage Slider -->
+	<div id="home-slider">	
+	    <div class="overlay"></div>
+	
+	    <div class="slider-text">
+	    	<div id="slidecaption"></div>
+	    </div>   
+		
+		<div class="control-nav">
+	        <a id="prevslide" class="load-item"><i class="font-icon-arrow-simple-left"></i></a>
+	        <a id="nextslide" class="load-item"><i class="font-icon-arrow-simple-right"></i></a>
+	        <ul id="slide-list"></ul>
+	        
+	        <a id="nextsection" href="#work"><i class="font-icon-arrow-simple-down"></i></a>
+	    </div>
+	</div>
+<!-- End Homepage Slider -->
+	
+
+<?php
+}
+?>
+
+<?php 
+function ecrireNav()
+{
+?>
+	<!-- Header -->
+	<header>
+	    <div class="sticky-nav">
+	    	<a id="mobile-nav" class="menu-nav" href="#menu-nav"></a>
+	        
+	        <div id="logo">
+	        	<a id="goUp" href="#home-slider" title="CO GLISSE | Partagez vos sessions">COGLISSE</a>
+	        </div>
+	        
+	        <nav id="menu">
+	        	<ul id="menu-nav">
+	            	<li class="current"><a href="#home-slider">Accueil</a></li>
+	                <li><a href="#cherche">Je cherche</a></li>
+	                <li><a href="#propose">Je propose</a></li>
+	                <li><a href="#CV">CV</a></li>
+					<li><a href="shortcodes.html" class="external">Connection et Profil</a></li>
+	            </ul>
+	        </nav>
+	        
+	    </div>
+	</header>
+	<!-- End Header -->
 <?php
 }
 ?>
