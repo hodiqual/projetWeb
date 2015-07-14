@@ -199,7 +199,7 @@ function ecrireSlider()
 	        <a id="nextslide" class="load-item"><i class="font-icon-arrow-simple-right"></i></a>
 	        <ul id="slide-list"></ul>
 	        
-	        <a id="nextsection" href="#work"><i class="font-icon-arrow-simple-down"></i></a>
+	        <a id="nextsection" href="#cherche"><i class="font-icon-arrow-simple-down"></i></a>
 	    </div>
 	</div>
 <!-- End Homepage Slider -->
