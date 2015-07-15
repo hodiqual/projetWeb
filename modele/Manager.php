@@ -8,13 +8,15 @@ class ManagerDB
 	// Instance de PDO
 	protected $_db;
 	
+	public function setDb($db)
+	{
+		$this->_db = $db;
+	}
+	
 	public function __construct($db) {
 		setDb($db);
 	}
 	
-	public function setDb(PDO $db)
-	{
-		$this->_db = $db;
-	}
+
 }
 ?>

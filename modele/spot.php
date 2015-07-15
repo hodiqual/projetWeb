@@ -87,7 +87,7 @@ class SpotsManager extends ManagerDB
  								'idFSI' => 1
 								) ;
 	
-	/*private $siouvilleDataMock = array ('nomSpot' => 'Siouville',
+	private $siouvilleDataMock = array ('nomSpot' => 'Siouville',
  								'photoSpot' => 'TODO',
  								'urlGoogleMap' => '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10351.957742046245!2d-1.8303565500000003!3d49.560222499999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x480cec4db3fab077%3A0x72b1686bcb8dd123!2s50340+Siouville-Hague!5e0!3m2!1sfr!2sfr!4v1436980143468" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>',
  								'idFSI' => 2
@@ -105,6 +105,11 @@ class SpotsManager extends ManagerDB
  								'idFSI' => 4
 								) ;
 	
+	private $lacanauDataMock = array ('nomSpot' => 'Lacanau',
+			'photoSpot' => 'TODO',
+			'urlGoogleMap' => '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11284.48954965727!2d-1.1947349999999974!3d45.00213650000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4801ffc558a23645%3A0xc02b43d4e1f03569!2sLacanau+Oc%C3%A9an%2C+33680+Lacanau!5e0!3m2!1sfr!2sfr!4v1436976508811" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>',
+			'idFSI' => 5 );
+	
 	private $seignosseDataMock  = array ('nomSpot' => 'Seignosse',
  								'photoSpot' => 'TODO',
  								'urlGoogleMap' => '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d46147.89133021739!2d-1.3938345!3d43.70549455!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd515a0dba9b1cf3%3A0x8f2b273d8e559e6b!2sSeignosse!5e0!3m2!1sfr!2sfr!4v1436984927701" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>',
@@ -115,18 +120,24 @@ class SpotsManager extends ManagerDB
  								'photoSpot' => 'TODO',
  								'urlGoogleMap' => '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d46314.005604354155!2d-1.519271!3d43.489288450000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd51401cdc979735%3A0xbdbc5ff838b9ab48!2sAnglet!5e0!3m2!1sfr!2sfr!4v1436985004003" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>',
  								'idFSI' => 7
-								) ;  */
+								) ;
 	
-	private $lacanauDataMock = array ('nomSpot' => 'Lacanau',
-			'photoSpot' => 'TODO',
-			'urlGoogleMap' => '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11284.48954965727!2d-1.1947349999999974!3d45.00213650000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4801ffc558a23645%3A0xc02b43d4e1f03569!2sLacanau+Oc%C3%A9an%2C+33680+Lacanau!5e0!3m2!1sfr!2sfr!4v1436976508811" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>',
-			'idFSI' => 5 );
+	private $niceDataMock  = array ('nomSpot' => 'Nice',
+ 								'photoSpot' => 'TODO',
+ 								'urlGoogleMap' => '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d46149.66507190079!2d7.25281705!3d43.70319045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12cdd0106a852d31%3A0x40819a5fd979a70!2sNice!5e0!3m2!1sfr!2sfr!4v1436985264418" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>',
+ 								'idFSI' => 11
+								) ;  
 	
 	public function getAll()
 	{
+		$spots[] = new Spot($dieppeDataMock);
+		$spots[] = new Spot($siouvilleDataMock);
+		$spots[] = new Spot($laTorcheDataMock);
+		$spots[] = new Spot($laSauzaieDataMock);
 		$spots[] = new Spot($lacanauDataMock);
-		$spots[] = new Spot($dieppeDataMock);
-		$spots[] = new Spot($dieppeDataMock);
+		$spots[] = new Spot($seignosseDataMock);
+		$spots[] = new Spot($angletDataMock);
+		$spots[] = new Spot($niceDataMock);
 		
 		return $spots;
 	}
