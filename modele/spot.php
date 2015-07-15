@@ -105,10 +105,16 @@ class SpotsManager extends ManagerDB
  								'idFSI' => 4
 								) ;
 	
-	private $laSauzaieDataMock  = array ('nomSpot' => 'La Sauzaie',
+	private $seignosseDataMock  = array ('nomSpot' => 'Seignosse',
  								'photoSpot' => 'TODO',
- 								'urlGoogleMap' => '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5478.4199847461805!2d-1.89084!3d46.642367449999966!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x480459cf0dbe5925%3A0xecb89b13d8daee73!2sLa+Sauzaie%2C+85470+Bretignolles-sur-Mer!5e0!3m2!1sfr!2sfr!4v1436984575333" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>',
- 								'idFSI' => 4
+ 								'urlGoogleMap' => '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d46147.89133021739!2d-1.3938345!3d43.70549455!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd515a0dba9b1cf3%3A0x8f2b273d8e559e6b!2sSeignosse!5e0!3m2!1sfr!2sfr!4v1436984927701" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>',
+ 								'idFSI' => 6
+								) ;
+	
+	private $angletDataMock  = array ('nomSpot' => 'Anglet',
+ 								'photoSpot' => 'TODO',
+ 								'urlGoogleMap' => '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d46314.005604354155!2d-1.519271!3d43.489288450000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd51401cdc979735%3A0xbdbc5ff838b9ab48!2sAnglet!5e0!3m2!1sfr!2sfr!4v1436985004003" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>',
+ 								'idFSI' => 7
 								) ;  */
 	
 	private $lacanauDataMock = array ('nomSpot' => 'Lacanau',
