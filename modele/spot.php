@@ -31,10 +31,10 @@ class Spot
 	  }
 	}
 	
-	public function nomSpot() { return $this->$_nomSpot; }
-	public function photoSpot() { return $this->$_photoSpot; }
-	public function urlGoogleMap() { return $this->$_urlGoogleMap; }
-	public function idFSI() { return $this->$_idFSI; }
+	public function nomSpot() { return $this->_nomSpot; }
+	public function photoSpot() { return $this->_photoSpot; }
+	public function urlGoogleMap() { return $this->_urlGoogleMap; }
+	public function idFSI() { return $this->_idFSI; }
 	
 	public function setNomSpot($nomSpot)
 	{
@@ -130,14 +130,14 @@ class SpotsManager extends ManagerDB
 	
 	public function getAll()
 	{
-		$spots[] = new Spot($this->dieppeDataMock);
-		$spots[] = new Spot($this->siouvilleDataMock);
-		$spots[] = new Spot($this->laTorcheDataMock);
-		$spots[] = new Spot($this->laSauzaieDataMock);
-		$spots[] = new Spot($this->lacanauDataMock);
-		$spots[] = new Spot($this->seignosseDataMock);
-		$spots[] = new Spot($this->angletDataMock);
-		$spots[] = new Spot($this->niceDataMock);
+		$spots[$this->dieppeDataMock['nomSpot']] = new Spot($this->dieppeDataMock);
+		$spots[$this->siouvilleDataMock['nomSpot']] = new Spot($this->siouvilleDataMock);
+		$spots[$this->laTorcheDataMock['nomSpot']] = new Spot($this->laTorcheDataMock);
+		$spots[$this->laSauzaieDataMock['nomSpot']] = new Spot($this->laSauzaieDataMock);
+		$spots[$this->lacanauDataMock['nomSpot']] = new Spot($this->lacanauDataMock);
+		$spots[$this->seignosseDataMock['nomSpot']] = new Spot($this->seignosseDataMock);
+		$spots[$this->angletDataMock['nomSpot']] = new Spot($this->angletDataMock);
+		$spots[$this->angletDataMock['nomSpot']] = new Spot($this->niceDataMock);
 		
 		return $spots;
 	}
