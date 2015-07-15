@@ -97,7 +97,19 @@ class SpotsManager extends ManagerDB
  								'photoSpot' => 'TODO',
  								'urlGoogleMap' => '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10712.521514064989!2d-4.353274000000001!3d47.837067499999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48173acc8773429b%3A0x64ed67bf332b3077!2sPointe+de+la+Torche%2C+29120+Plomeur!5e0!3m2!1sfr!2sfr!4v1436980210903" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>',
  								'idFSI' => 3
-								] ; */
+								) ;
+	
+	private $laSauzaieDataMock  = array ('nomSpot' => 'La Sauzaie',
+ 								'photoSpot' => 'TODO',
+ 								'urlGoogleMap' => '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5478.4199847461805!2d-1.89084!3d46.642367449999966!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x480459cf0dbe5925%3A0xecb89b13d8daee73!2sLa+Sauzaie%2C+85470+Bretignolles-sur-Mer!5e0!3m2!1sfr!2sfr!4v1436984575333" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>',
+ 								'idFSI' => 4
+								) ;
+	
+	private $laSauzaieDataMock  = array ('nomSpot' => 'La Sauzaie',
+ 								'photoSpot' => 'TODO',
+ 								'urlGoogleMap' => '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5478.4199847461805!2d-1.89084!3d46.642367449999966!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x480459cf0dbe5925%3A0xecb89b13d8daee73!2sLa+Sauzaie%2C+85470+Bretignolles-sur-Mer!5e0!3m2!1sfr!2sfr!4v1436984575333" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>',
+ 								'idFSI' => 4
+								) ;  */
 	
 	private $lacanauDataMock = array ('nomSpot' => 'Lacanau',
 			'photoSpot' => 'TODO',

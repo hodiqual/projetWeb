@@ -2,7 +2,7 @@
 require_once("sql.php");
 require_once("modele/spot.php");
 class SQLTest extends PHPUnit_Framework_TestCase {
-  public function test() {
+  public function testSQL() {
     $sql = new SQL();
     $doc = $sql->main();
     $this->assertNotEquals($doc, false);
@@ -11,11 +11,11 @@ class SQLTest extends PHPUnit_Framework_TestCase {
 
 
 class SpotTest extends PHPUnit_Framework_TestCase {
-	public function test() {
+	public function testGetAll() {
 		$spotsManager = new SpotsManager(NULL);
 		
 		$spotsList = $spotsManager->getAll();
-		$this->assertEquals(2, count($spotsList));
+		$this->assertEquals(9, count($spotsList));
 	}
 }
 ?>
