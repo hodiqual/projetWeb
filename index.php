@@ -1,4 +1,5 @@
 <?php
+	include "modele/createur.php";
 	include "template.php";
 	ecrireHead();
 	ecrireSlider();
@@ -319,5 +320,7 @@
 <!-- End CV Section -->
 
 <?php
+	$tabCreateur = Createur::getCreateurArray();
+	ecrireCreateurs($tabCreateur);
 	ecrireFooter();
 ?>
