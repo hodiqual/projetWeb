@@ -137,7 +137,7 @@ class SpotsManager extends ManagerDB
 		$spots[$this->lacanauDataMock['nomSpot']] = new Spot($this->lacanauDataMock);
 		$spots[$this->seignosseDataMock['nomSpot']] = new Spot($this->seignosseDataMock);
 		$spots[$this->angletDataMock['nomSpot']] = new Spot($this->angletDataMock);
-		$spots[$this->angletDataMock['nomSpot']] = new Spot($this->niceDataMock);
+		$spots[$this->niceDataMock['nomSpot']] = new Spot($this->niceDataMock);
 		
 		return $spots;
 	}
