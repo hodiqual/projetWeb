@@ -14,9 +14,7 @@ class ManagerDB
 	}
 	
 	public function __construct($db) {
-		setDb($db);
+		$this->_db = $db;
 	}
-	
-
 }
 ?>
