@@ -15,7 +15,7 @@ class SpotTest extends PHPUnit_Framework_TestCase {
 		$spotsManager = new SpotsManager(NULL);
 		
 		$spotsList = $spotsManager->getAll();
-		$this->assertEquals(9, count($spotsList));
+		$this->assertEquals(8, count($spotsList));
 	}
 }
 ?>
