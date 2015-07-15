@@ -17,25 +17,7 @@ if (isset($_REQUEST['choix'])) {
 // Retrouve l'image correspondant au spot
 function getImgSpot($idSpot) {
 	$urlFichier='photo/'.$idSpot.'.jpg';  // constitue nom du fichier photo
-	//$ret='<img src="'.$urlFichier.'" alt="" />';  // constitue contenu html <img .../>
-	switch ($idSpot)
-	{
-		case 0 :
-			$urlFichier = 'LACANAU';
-			break;
-		case 1 :
-			$urlFichier = 'LA TORCHE';
-			break;
-		case 2 :
-			$urlFichier = 'BISCAROSSE';
-			break;	
-	}
-
-	//$ret='<a href="#">'.$urlFichier.'</a>';
-	//echo $ret;
-	//}
-	//fin PHP
-	
+	//$ret='<img src="'.$urlFichier.'" alt="" />';  // constitue contenu html <img .../>	
 	$idSpot++;
 	?>
 	<div id="previsions_fsi_gratuites"></div>
@@ -70,4 +52,3 @@ function getImgSpot($idSpot) {
 <?php
 }
 ?>
-	
