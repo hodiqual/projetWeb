@@ -131,13 +131,13 @@ class SpotsManager extends ManagerDB
 	public function getAll()
 	{
 		$spots[] = new Spot($this->dieppeDataMock);
-		$spots[] = new Spot($siouvilleDataMock);
-		$spots[] = new Spot($laTorcheDataMock);
-		$spots[] = new Spot($laSauzaieDataMock);
-		$spots[] = new Spot($lacanauDataMock);
-		$spots[] = new Spot($seignosseDataMock);
-		$spots[] = new Spot($angletDataMock);
-		$spots[] = new Spot($niceDataMock);
+		$spots[] = new Spot($this->$siouvilleDataMock);
+		$spots[] = new Spot($this->$laTorcheDataMock);
+		$spots[] = new Spot($this->$laSauzaieDataMock);
+		$spots[] = new Spot($this->$lacanauDataMock);
+		$spots[] = new Spot($this->$seignosseDataMock);
+		$spots[] = new Spot($this->$angletDataMock);
+		$spots[] = new Spot($this->$niceDataMock);
 		
 		return $spots;
 	}
