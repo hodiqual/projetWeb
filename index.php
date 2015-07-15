@@ -222,7 +222,7 @@
                         5240 Vanish Island. 105
                         <br>
                         Unknow
-                    </li>
+                    </li>               
                 </ul>
             </div>
         </div>
@@ -232,95 +232,11 @@
 </div>
 <!-- End Je propose Section -->
 
-<!-- CV Section -->
-<div id="CV" class="page">
-<div class="container">
-    <!-- Title Page -->
-    <div class="row">
-        <div class="span12">
-            <div class="title-page">
-                <h2 class="title">Curriculum Vitae</h2>
-                <h3 class="title-description">Quelques mots sur nous. A faire en dynamique une fonction avec paramètre de chaque personne</h3>
-            </div>
-        </div>
-    </div>
-    <!-- End Title Page -->
-    
-    <!-- People -->
-    <div class="row">
-    	
-        <!-- Start Profile -->
-    	<div class="span4 profile">
-        	<div class="image-wrap">
-                <div class="hover-wrap">
-                    <span class="overlay-img"></span>
-                    <span class="overlay-text-thumb">Raimanus</span>
-                </div>
-                <img src="_include/img/profile/profile-01.jpg" alt="Raimana Thomas">
-            </div>
-            <h3 class="profile-name">Raimana Thomas</h3>
-            <p class="profile-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac augue at erat <a href="#">hendrerit dictum</a>. 
-            Praesent porta, purus eget sagittis imperdiet, nulla mi ullamcorper metus, id hendrerit metus diam vitae est. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
-            	
-            <div class="social">
-            	<ul class="social-icons">
-                	<li><a href="#"><i class="font-icon-social-twitter"></i></a></li>
-                    <li><a href="#"><i class="font-icon-social-dribbble"></i></a></li>
-                    <li><a href="#"><i class="font-icon-social-facebook"></i></a></li>
-                </ul>
-            </div>
-        </div>
-        <!-- End Profile -->
-        
-        <!-- Start Profile -->
-    	<div class="span4 profile">
-        	<div class="image-wrap">
-                <div class="hover-wrap">
-                    <span class="overlay-img"></span>
-                    <span class="overlay-text-thumb">Brice de Nice</span>
-                </div>
-                <img src="_include/img/profile/profile-02.jpg" alt="Alexis Hodiquet">
-            </div>
-            <h3 class="profile-name">Alexis Hodiquet</h3>
-            <p class="profile-description">Le meilleur d'entre nous au surf ... sur la plage <a href="#">hendrerit dictum</a>. 
-            Il a tout le matos, il sait parler du surf et de la houle mieux que personne, mais il a encore du mal à se lever sur la planche. Espérons qu'un jour son niveau soit aussi bon que son niveau théorique !</p>
-            	
-            <div class="social">
-            	<ul class="social-icons">
-                	<li><a href="#"><i class="font-icon-social-twitter"></i></a></li>
-                    <li><a href="#"><i class="font-icon-social-linkedin"></i></a></li>
-                    <li><a href="#"><i class="font-icon-social-google-plus"></i></a></li>
-                    <li><a href="#"><i class="font-icon-social-vimeo"></i></a></li>
-                </ul>
-            </div>
-        </div>
-        <!-- End Profile -->
-        
-        <!-- Start Profile -->
-    	<div class="span4 profile">
-        	<div class="image-wrap">
-                <div class="hover-wrap">
-                    <span class="overlay-img"></span>
-                    <span class="overlay-text-thumb">Lead Designer</span>
-                </div>
-                <img src="_include/img/profile/profile-03.jpg" alt="Joshua Insanus">
-            </div>
-            <h3 class="profile-name">Joshua Insanus</h3>
-            <p class="profile-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac augue at erat <a href="#">hendrerit dictum</a>. 
-            Praesent porta, purus eget sagittis imperdiet, nulla mi ullamcorper metus, id hendrerit metus diam vitae est. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
-            	
-
-        </div>
-        <!-- End Profile -->
-        
-    </div>
-    <!-- End People -->
-</div>
-</div>
-<!-- End CV Section -->
-
 <?php
+	// section CV
 	$tabCreateur = Createur::getCreateurArray();
 	ecrireCreateurs($tabCreateur);
+	// fin section CV
+
 	ecrireFooter();
 ?>
