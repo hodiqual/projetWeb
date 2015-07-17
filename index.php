@@ -182,6 +182,9 @@
             	<p class="contact-name">
             		Spot:
             		<select id="idSpot" name="idSpot">
+            			<?php
+							
+						?>
             			<option value="Lacanau">Lacanau</option>
             			<option value="La Torche">La Torche</option>
             			<option value="Nice">Nice</option>
@@ -213,17 +216,8 @@
         
         <div class="span3">
         	<div class="contact-details">
-        		<h3>INFO SPOT</h3>
-                <ul>
-                    <li><a id="photoSpot" href="#">hello@brushed.com</a></li>
-                    <li>Du spot choisi</li>
-                    <li>
-                        Brushed Studio
-                        <br>
-                        5240 Vanish Island. 105
-                        <br>
-                        Unknow
-                    </li>               
+        		<h3>INFOS SPOT</h3>
+                <ul id="photoSpot" >             
                 </ul>
             </div>
         </div>
