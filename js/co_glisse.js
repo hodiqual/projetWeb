@@ -26,20 +26,20 @@ $(document).ready(function() {     // alert( "ready" );
 	});
 	
 	$("#propose_submit").click(function(){
-		console.log('DEBUG la ca marche');
-		$contact_form = $('#contact-form');
+		console.log('DEBUG propose_submit la ca marche');
+		
+		$contact_form = $('#propose-form');
 		var fields = $contact_form.serialize();
 		
 		$.ajax({
-			type: "POST",
-			url: "_include/php/contact.php",
+			type: "GET",
+			url: "propose.php",
 			data: fields,
 			dataType: 'json',
 			success: function(response) {
-				console.log('DEBUG SUCESS');
+				console.log('DEBUG propose_submit SUCCESS');
 				if(response.status){
 					$('#propose-form input').val('');
-					$('#propose-form textarea').val('');
 				}
 				
 				$('#propose-response').empty().html(response.html);
@@ -47,7 +47,7 @@ $(document).ready(function() {     // alert( "ready" );
 		});
 		
 		
-		console.log('DEBUG la ca marche jusqua la fin');
+		console.log('DEBUG  propose_submitla ca marche jusqua la fin');
 		});
 	
 	// gestion de l'affichage du tab des clients
