@@ -273,25 +273,46 @@ function ecrireNav()
 				<li><a href="#cherche">Je cherche</a></li>
 				<li><a href="#propose">Je propose</a></li>
 				<li><a href="#CV">CV</a></li>
-				<li><a href="#conn_profil" class="fancybox-conn_profil">Connection</a></li>
-				<div id="conn_profil" style="display:none;width:300px;">
+				<li><a href="#conn_profil"
+					class="fancybox-conn_profil font-icon-user-border"> Connection</a></li>
+				<div id="conn_profil" style="display: none; width: 300px;">
 					<div class="tabbable">
 						<ul class="nav nav-tabs" id="myTab">
-							<li class="active">
-								<a href="#connection" data-toggle="tab">Connection</a>
+							<li class="active"><a href="#connection" data-toggle="tab">Connection</a>
 							</li>
-							<li>
-								<a href="#profil" data-toggle="tab">Inscription</a>
-							</li>
+							<li><a href="#profil" data-toggle="tab">Inscription</a></li>
 						</ul>
 						<div class="tab-content">
-	                        <div class="tab-pane fade in active" id="connection">
-	                            Formulaire de connection    
-	                        </div>
-	                        <div class="tab-pane fade in" id="profil">
-	                            Formulaire d inscription
-	                        </div>
-                    	</div>
+							<div class="tab-pane fade in active" id="connection">
+								<div class="row">
+									<div class="span9">
+										<form id="contact-form" class="contact-form" action="#">
+											<p class="contact-name">
+												<input id="contact_name" type="text" placeholder="Full Name"
+													value="" name="name" />
+											</p>
+											<p class="contact-email">
+												<input id="contact_email" type="text"
+													placeholder="Email Address" value="" name="email" />
+											</p>
+											<p class="contact-message">
+												<textarea id="contact_message" placeholder="Your Message"
+													name="message" rows="15" cols="40"></textarea>
+											</p>
+											<p class="contact-submit">
+												<a id="contact-submit" class="submit" href="#">Send Your
+													Email</a>
+											</p>
+
+											<div id="response"></div>
+										</form>
+
+									</div>
+								</div>
+							</div>
+							<div class="tab-pane fade in" id="profil">Formulaire d
+								inscription</div>
+						</div>
 					</div>
 				</div>
 			</ul>
@@ -304,7 +325,7 @@ function ecrireNav()
 }
 ?>
 
-<?php 
+<?php
 function ecrireCreateurs($tabCreateurs) {
 	?>
 
@@ -335,7 +356,8 @@ function ecrireCreateurs($tabCreateurs) {
 					<div class="hover-wrap">
 						<span class="overlay-img"></span> <span class="overlay-text-thumb"><?php echo $createur->_surnom ?></span>
 					</div>
-					<img src="<?php echo $createur->_avatar?>" alt="<?php echo $createur->_nom?>">
+					<img src="<?php echo $createur->_avatar?>"
+						alt="<?php echo $createur->_nom?>">
 				</div>
 				<h3 class="profile-name"><?php echo $createur->_nom?></h3>
 				<p class="profile-description">
@@ -346,7 +368,8 @@ function ecrireCreateurs($tabCreateurs) {
 					<ul class="social-icons">
 						<?php foreach ( $createur->_profil as $social_type => $social_url)
 						{ ?> 
-							<li><a href="<?php echo $social_url?>"><i class="font-icon-social-<?php echo $social_type?>"></i></a></li>
+							<li><a href="<?php echo $social_url?>"><i
+								class="font-icon-social-<?php echo $social_type?>"></i></a></li>
 				  <?php } ?>
 					</ul>
 				</div>
