@@ -274,44 +274,20 @@ function ecrireNav()
 				<li><a href="#propose">Je propose</a></li>
 				<li><a href="#CV">CV</a></li>
 				<li><a href="#conn_profil"
-					class="fancybox-conn_profil font-icon-user-border"> Connection</a></li>
-				<div id="conn_profil" style="display: none; width: 300px;">
+					class="fancybox-conn_profil font-icon-user-border"> Connexion</a></li>
+				<div id="conn_profil"> <?php //TODO style="display: none; width: 300px;" ?>
 					<div class="tabbable">
 						<ul class="nav nav-tabs" id="myTab">
-							<li class="active"><a href="#connection" data-toggle="tab">Connection</a>
-							</li>
+							<li class="active"><a href="#connection" data-toggle="tab">Connexion</a></li>
 							<li><a href="#profil" data-toggle="tab">Inscription</a></li>
 						</ul>
 						<div class="tab-content">
 							<div class="tab-pane fade in active" id="connection">
-								<div class="row">
-									<div class="span9">
-										<form id="contact-form" class="contact-form" action="#">
-											<p class="contact-name">
-												<input id="contact_name" type="text" placeholder="Full Name"
-													value="" name="name" />
-											</p>
-											<p class="contact-email">
-												<input id="contact_email" type="text"
-													placeholder="Email Address" value="" name="email" />
-											</p>
-											<p class="contact-message">
-												<textarea id="contact_message" placeholder="Your Message"
-													name="message" rows="15" cols="40"></textarea>
-											</p>
-											<p class="contact-submit">
-												<a id="contact-submit-button" class="submit" href="#">Send Your
-													Email</a>
-											</p>
-
-											<div id="response"></div>
-										</form>
-
-									</div>
-								</div>
+								<?php ecrireConnexionForm(); ?>
 							</div>
-							<div class="tab-pane fade in" id="profil">Formulaire d
-								inscription</div>
+							<div class="tab-pane fade in" id="profil">
+								Formulaire d inscription
+							</div>
 						</div>
 					</div>
 				</div>
@@ -386,6 +362,33 @@ function ecrireCreateurs($tabCreateurs) {
 </div>
 <!-- End CV Section -->
 
+<?php
+}
+?>
+
+<?php
+function ecrireConnexionForm() {
+	?>
+<div class="row">
+	<div class="span9">
+		<form id="connexion-form" class="contact-form" action="#">
+			<p class="contact-email">
+				<input id="connexion_email" type="text" placeholder="Email" value=""
+					name="email" />
+			</p>
+			<p class="contact-name">
+				<input id="connexion_name" type="password"
+					placeholder="Mot de passe" value="" name="mdp" />
+			</p>
+
+			<p class="contact-submit">
+				<a id="connexion_submit" class="button button-small" href="#">Connexion</a>
+			</p>
+
+			<div id="connexion-response"></div>
+		</form>
+	</div>
+</div>
 <?php
 }
 ?>

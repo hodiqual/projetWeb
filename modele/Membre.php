@@ -95,3 +95,37 @@ class Membre {
 		}
 	}
 }
+
+require_once 'Manager.php';
+
+class MembresManager extends ManagerDB {
+	
+	function authentifier($email,$mdp) {
+		$dbh = $this->_db;
+		$sql = "SELECT * FROM Membre WHERE email = :email AND mdp = :mdp;";
+		$sth = $dbh->prepare($sql);
+		$sth->bindParam(":email", $email, PDO::PARAM_STR);
+		$sth->bindParam(":mdp", $mdp, PDO::PARAM_STR);
+		$bool = $sth->execute();
+		if ($result = $sth->fetch(PDO::FETCH_ASSOC)) // on charge les paramètres de l'utilisateur
+		{	
+			return new Membre($result);
+		}
+	}
+	
+	function chargerVehicule(Membre $membre) {
+		$dbh = $this->_db;
+		$sql = "SELECT V.* FROM Possede AS P, Vehicule AS V  WHERE noMem = :noMem AND P.noVeh = V.noVeh;";
+		$sth = $dbh->prepare($sql);
+		$sth->bindParam(":noMem", $membre->noMem(), PDO::PARAM_STR);
+		$bool = $sth->execute();
+		$listeVeh = array();
+		if ($result = $sth->fetch(PDO::FETCH_ASSOC)) // on charge les paramètres de l'utilisateur
+		{	
+			$listeVeh[] = new Vehicule($result);
+		}
+		$membre->setListeVehicules($listeVeh);
+	}
+}
+
+?>

@@ -46,9 +46,34 @@ $(document).ready(function() {     // alert( "ready" );
 			}
 		});
 		
-		
 		console.log('DEBUG  propose_submitla ca marche jusqua la fin');
 		});
+	
+	
+	$("#connexion_submit").click(function(){
+		console.log('DEBUG connexion_submit la ca marche');
+		
+		$auth_form = $('#connexion-form');
+		var fields = $auth_form.serialize();
+		
+		$.ajax({
+			type: "GET",
+			url: "auth.php",
+			data: fields,
+			dataType: 'json',
+			success: function(response) {
+				console.log('DEBUG propose_submit SUCCESS');
+				if(response.status){
+					$('#connexion-form input').val('');
+				}
+				
+				$('#connexion-response').empty().html(response.html);
+			}
+		});
+		
+		console.log('DEBUG  connexion_submit ca marche jusqua la fin');
+		});
+	
 	
 	// gestion de l'affichage du tab des clients
 	//$("#entete").mouseover(function(){ afficherTableauClient();});  
