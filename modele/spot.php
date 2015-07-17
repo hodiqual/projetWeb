@@ -128,7 +128,7 @@ class SpotsManager extends ManagerDB
  								'idFSI' => 11
 								) ;  
 	
-	public function getAll()
+	public function getAllMock()
 	{
 		$spots[$this->dieppeDataMock['nomSpot']] = new Spot($this->dieppeDataMock);
 		$spots[$this->siouvilleDataMock['nomSpot']] = new Spot($this->siouvilleDataMock);
@@ -140,6 +140,39 @@ class SpotsManager extends ManagerDB
 		$spots[$this->niceDataMock['nomSpot']] = new Spot($this->niceDataMock);
 		
 		return $spots;
+	}
+	
+	public function getAll()
+	{
+		$dbh = connectDb(); 					// connexion à la bdd
+		$sql = "SELECT nomSpot, photoSpot, urlGoogleMap, idFSI FROM Spot";
+		//$sth = $dbh->prepare($sql);
+		//$sth->execute();
+		//while($result = $sth->fetch(PDO::FETCH_OBJ)) {
+		//	echo '<option value="'.$result->nomSpot().'">'.$result->nomSpot().'</option>';
+		//	$spots[$result['nomSpot']] = new Spot($result);
+		//}
+		//$dbh = null;							// déconnexion de la bdd
+
+		//return $spots;
+		
+		$spots=array();
+		$result = $dbh->query($sql);
+		if ($result)
+		{
+			while  ($occ = $result->fetch(PDO::FETCH_ASSOC))
+			{
+				//echo '<option value="'."DEBUG".'">'.$occ['nomSpot'].'</option>';
+				$spots[$occ['nomSpot']] = new Spot($occ);  // construit un objet client et l'ajoute au tableau
+			}
+		}
+		else 
+		{
+			print($dbh->errorInfo());
+			echo '<option value="'."DEBUG".'">'."IECH".'</option>';
+		}
+			
+		return($spots);
 	}
 }
 ?>
