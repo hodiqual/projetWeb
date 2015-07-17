@@ -97,6 +97,7 @@ class Membre {
 }
 
 require_once 'Manager.php';
+require_once 'Vehicule.php';
 
 class MembresManager extends ManagerDB {
 	
