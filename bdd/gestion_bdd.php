@@ -54,7 +54,7 @@ function setMembre() {
 	$sth->bindParam(":email", $_REQUEST["email"], PDO::PARAM_STR);
 	$sth->bindParam(":mdp", $_REQUEST["mdp"], PDO::PARAM_STR);
 	if ($sth->execute() == 0)
-		print($dbh->errorInfo()); 		// affiche mésage d'érreur de la bdd 
+		print($dbh->errorInfo()); 		// affiche message d'érreur de la bdd 
 	$dbh = null;							// déconnexion de la bdd					
 }
 
@@ -70,7 +70,7 @@ function updateMembre() {
 	$sth->bindParam(":mdp", $_REQUEST["mdp"], PDO::PARAM_STR);
 	$sth->bindParam(":noMem", $_REQUEST["noMem"], PDO::PARAM_STR);
 	if ($sth->execute() == 0)
-		print($dbh->errorInfo()); 		// affiche mésage d'érreur de la bdd 
+		print($dbh->errorInfo()); 		// affiche message d'érreur de la bdd 
 	$dbh = null; 							// déconnexion de la bdd
 }
 
@@ -81,7 +81,7 @@ function deleteMembre() {
 	$sth = $dbh->prepare($sql);
 	$sth->bindParam(":noMem", $_REQUEST["noMem"], PDO::PARAM_STR);
 	if ($sth->execute() == 0)
-		print($dbh->errorInfo()); 		// affiche mésage d'érreur de la bdd 
+		print($dbh->errorInfo()); 		// affiche message d'érreur de la bdd 
 	$dbh = null; 							// déconnexion de la bdd
 }
 
@@ -99,7 +99,7 @@ function getListeSessions() {
 }	
 
 function setVehicule() {
-	$dbh = connectDb(); 					// connexion à la bdd
+	$dbh = connectDb(); 										// connexion à la bdd
 	$sql = "INSERT INTO Vehicule (nbrPlaces, nbrPlanches, marqueVeh, modeleVeh, couleurVeh, photoVeh) VALUES (:nbrPlaces, :nbrPlanches, :marqueVeh, :modeleVeh, :couleurVeh, :photoVeh);";
 	$sth = $dbh->prepare($sql);
 	$sth->bindParam(":nbrPlaces", $_REQUEST["nbrPlaces"], PDO::PARAM_STR);
@@ -108,7 +108,67 @@ function setVehicule() {
 	$sth->bindParam(":modeleVeh", $_REQUEST["modeleVeh"], PDO::PARAM_STR);
 	$sth->bindParam(":couleurVeh", $_REQUEST["couleurVeh"], PDO::PARAM_STR);
 	$sth->bindParam(":photoVeh", $_REQUEST["photoVeh"], PDO::PARAM_STR);
-	if ($sth->execute() == 0)
-		print($dbh->errorInfo()); 		// affiche mésage d'érreur de la bdd 
-	$dbh = null;							// déconnexion de la bdd					
+	if ($sth->execute() == 0) {
+		print($dbh->errorInfo()); 							// affiche message d'érreur de la bdd
+	} else setPossede($dbh->lastInsertId(), $dbh);	// création d'un Possede
+	$dbh = null;												// déconnexion de la bdd					
 }
+
+function setPossede($noVeh, $dbh) {
+	$sql = "INSERT INTO Possede VALUES (:noMem, :noVeh);";
+	$sth = $dbh->prepare($sql);
+	$sth->bindParam(":noMem", $_SESSION["noMem"], PDO::PARAM_STR);
+	$sth->bindParam(":noVeh", $noVeh, PDO::PARAM_STR);
+	if ($sth->execute() == 0)
+		print($dbh->errorInfo()); 	// affiche message d'érreur de la bdd 				
+}
+
+function getPossede($noMem) {
+	$sql = "SELECT *noVeh FROM Possede WHERE noMem = :noMem;";
+	$sth = $dbh->prepare($sql);
+	$sth->bindParam(":noMem", $_SESSION["noMem"], PDO::PARAM_STR);
+	$sth->bindParam(":noVeh", $noVeh, PDO::PARAM_STR);
+	if ($sth->execute() == 0)
+		print($dbh->errorInfo()); 	// affiche message d'érreur de la bdd 				
+}
+
+function setSessionSurf() {
+	$dbh = connectDb(); 				// connexion à la bdd
+	$sql = "INSERT INTO SessionSurf (nomSpot, dateAller, dateRetour, lieuDep) VALUES (:nomSpot, :dateAller, :dateRetour, :lieuDep);";
+	$sth = $dbh->prepare($sql);
+	$sth->bindParam(":nomSpot", $_REQUEST["nomSpot"], PDO::PARAM_STR);
+	$sth->bindParam(":dateAller", $_REQUEST["dateAller"], PDO::PARAM_STR);
+	$sth->bindParam(":dateRetour", $_REQUEST["dateRetour"], PDO::PARAM_STR);
+	$sth->bindParam(":lieuDep", $_REQUEST["lieuDep"], PDO::PARAM_STR);
+	if ($sth->execute() == 0) {
+		print($dbh->errorInfo()); 	// affiche message d'érreur de la bdd
+	}
+	else {
+		$noSes = $dbh->lastInsertId();
+		setPropose($noSes, $dbh);	// création d'un Propose
+	}
+	$dbh = null;						// déconnexion de la bdd
+	setParticipe($noSes);			// celui qui propose une session y participe					
+}
+
+function setPropose($noSes, $dbh) {
+	$sql = "INSERT INTO Propose VALUES (:noMem, :noSes);";
+	$sth = $dbh->prepare($sql);
+	$sth->bindParam(":noMem", $_SESSION["noMem"], PDO::PARAM_STR);
+	$sth->bindParam(":noSes", $noSes, PDO::PARAM_STR);
+	if ($sth->execute() == 0)
+		print($dbh->errorInfo()); 	// affiche message d'érreur de la bdd 				
+}
+
+function setParticipe($noSes) {
+	$dbh = connectDb();
+	$sql = "INSERT INTO Propose VALUES (:noMem, :noSes);";
+	$sth = $dbh->prepare($sql);
+	$sth->bindParam(":noMem", $_SESSION["noMem"], PDO::PARAM_STR);
+	$sth->bindParam(":noSes", $noSes, PDO::PARAM_STR);
+	if ($sth->execute() == 0)
+		print($dbh->errorInfo()); 	// affiche message d'érreur de la bdd 
+	$dbh = null;						// déconnexion de la bdd			
+}
+
+?>
