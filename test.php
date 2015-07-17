@@ -11,7 +11,7 @@ require_once("modele/spot.php");
 */
 
 class SpotTest extends PHPUnit_Framework_TestCase {
-	public function testGetAll() {
+	public function testGetAllSpots() {
 		$spotsManager = new SpotsManager(NULL);
 		
 		$spotsList = $spotsManager->getAll();

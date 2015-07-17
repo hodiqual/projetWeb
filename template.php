@@ -273,7 +273,27 @@ function ecrireNav()
 				<li><a href="#cherche">Je cherche</a></li>
 				<li><a href="#propose">Je propose</a></li>
 				<li><a href="#CV">CV</a></li>
-				<li><a href="shortcodes.html" class="external">Connection et Profil</a></li>
+				<li><a href="#conn_profil" class="fancybox-conn_profil">Connection</a></li>
+				<div id="conn_profil" style="display:none;width:300px;">
+					<div class="tabbable">
+						<ul class="nav nav-tabs" id="myTab">
+							<li class="active">
+								<a href="#connection" data-toggle="tab">Connection</a>
+							</li>
+							<li>
+								<a href="#profil" data-toggle="tab">Inscription</a>
+							</li>
+						</ul>
+						<div class="tab-content">
+	                        <div class="tab-pane fade in active" id="connection">
+	                            Formulaire de connection    
+	                        </div>
+	                        <div class="tab-pane fade in" id="profil">
+	                            Formulaire d inscription
+	                        </div>
+                    	</div>
+					</div>
+				</div>
 			</ul>
 		</nav>
 

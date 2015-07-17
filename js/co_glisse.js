@@ -15,6 +15,16 @@ $(document).ready(function() {     // alert( "ready" );
 		$("#idSpot").change(function(){	afficherPhoto($(this));});  //$(this) permet de rÈcupÈrer en para l'objet select particulier sur lequel survient le changement	
 	}	
 	
+	$(".fancybox-conn_profil").fancybox({
+		openEffect  : 'none',
+		closeEffect : 'none',
+		afterLoad   : function() {
+			console.log("DEBUG fancybox");
+			this.inner.prepend( '<h4>1. My custom title</h4>' );
+			this.content = '<h4>2. My custom title</h4>' + this.content.html();
+		}
+	});
+	
 	// gestion de l'affichage du tab des clients
 	//$("#entete").mouseover(function(){ afficherTableauClient();});  
 	//$("#entete").mouseleave(function(){ $("#zone3").empty(); });  
@@ -37,6 +47,16 @@ function afficherPhoto(sel) {  //alert('afficherPhoto');
 		error:function(){ alert("erreur serveur lors de la recuperation de la photo");}
 	});	   
 }
+
+$(".fancybox-open").fancybox({
+	openEffect  : 'none',
+	closeEffect : 'none',
+	afterLoad   : function() {
+		this.inner.prepend( '<h1>1. My custom title</h1>' );
+		this.content = '<h1>2. My custom title</h1>' + this.content.html();
+	}
+});
+
 
 /*
 
