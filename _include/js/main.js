@@ -188,9 +188,11 @@ BRUSHED.fancyBox = function(){
 ================================================== */
 
 BRUSHED.contactForm = function(){
-	$("#contact-submit").on('click',function() {
+	console.log("DEBUG charge onclick contact");
+	//$("#contact-submit-button").on('click',function() {
+	$("#contact-submit-button").click(function() {
 		$contact_form = $('#contact-form');
-		
+		console.log("DEBUG capte le click sur contact");
 		var fields = $contact_form.serialize();
 		
 		$.ajax({
@@ -199,7 +201,7 @@ BRUSHED.contactForm = function(){
 			data: fields,
 			dataType: 'json',
 			success: function(response) {
-				
+				console.log("DEBUG sucess");
 				if(response.status){
 					$('#contact-form input').val('');
 					$('#contact-form textarea').val('');

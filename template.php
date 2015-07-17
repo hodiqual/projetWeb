@@ -300,7 +300,7 @@ function ecrireNav()
 													name="message" rows="15" cols="40"></textarea>
 											</p>
 											<p class="contact-submit">
-												<a id="contact-submit" class="submit" href="#">Send Your
+												<a id="contact-submit-button" class="submit" href="#">Send Your
 													Email</a>
 											</p>
 

@@ -73,12 +73,12 @@ class Contact_Form{
 
 
 	private function sendEmail(){
-		$mail = mail($this->email_admin, $this->subject, $this->message,
+		/*$mail = mail($this->email_admin, $this->subject, $this->message,
 			 "From: ".$this->name." <".$this->email.">\r\n"
 			."Reply-To: ".$this->email."\r\n"
-		."X-Mailer: PHP/" . phpversion());
+		."X-Mailer: PHP/" . phpversion());*/
 	
-		if($mail)
+		if(1)
 		{
 			$this->response_status = 1;
 			$this->response_html = '<p>Thank You!</p>';

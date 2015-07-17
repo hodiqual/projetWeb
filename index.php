@@ -178,8 +178,7 @@
     <!-- Contact Form -->
     <div class="row">
     	<div class="span9">
-        
-        	<form id="contact-form" class="contact-form" action="#">
+        	<form id="propose-form" class="contact-form" action="#">
             	<p class="contact-name">
             		Spot:
             		<select id="idSpot" name="idSpot">
@@ -196,24 +195,19 @@
             	</p>
             	<p class="contact-name">
             		Aller:
-            		<input id="contact_name" type="date" placeholder="Full Name" value="" name="dateAller" />
-            		<input id="contact_name" type="time" placeholder="18:00" value="" name="heureAller" />
+            		<input id="propose-dateAller" type="date" placeholder="Full Name" value="" name="dateAller" />
+            		<input id="propose-heureAller" type="time" placeholder="18:00" value="" name="heureAller" />
                 </p>
             	<p class="contact-name">
             		Retour:
-            		<input id="contact_name" type="date" placeholder="Full Name" value="" name="dateRetour" />
-            		<input id="contact_name" type="time" placeholder="Full Name" value="" name="heureRetour" />
+            		<input id="propose-dateRetour" type="date" placeholder="Full Name" value="" name="dateRetour" />
                 </p>
-                <p class="contact-message">
-                	<textarea id="contact_message" placeholder="Des éventuelles précisions" name="message" rows="15" cols="40"></textarea>
-                </p>
+
                 <p class="contact-submit">
-                	<a id="contact-submit" class="submit" href="#">Je Propose</a>
+                	<a id="propose_submit" class="button" href="#propose">Je Propose</a>
                 </p>
                 
-                <div id="response">
-                
-                </div>
+                <div id="propose-response"></div>
             </form>
          
         </div>

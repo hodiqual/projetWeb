@@ -25,6 +25,31 @@ $(document).ready(function() {     // alert( "ready" );
 		}
 	});
 	
+	$("#propose_submit").click(function(){
+		console.log('DEBUG la ca marche');
+		$contact_form = $('#contact-form');
+		var fields = $contact_form.serialize();
+		
+		$.ajax({
+			type: "POST",
+			url: "_include/php/contact.php",
+			data: fields,
+			dataType: 'json',
+			success: function(response) {
+				console.log('DEBUG SUCESS');
+				if(response.status){
+					$('#propose-form input').val('');
+					$('#propose-form textarea').val('');
+				}
+				
+				$('#propose-response').empty().html(response.html);
+			}
+		});
+		
+		
+		console.log('DEBUG la ca marche jusqua la fin');
+		});
+	
 	// gestion de l'affichage du tab des clients
 	//$("#entete").mouseover(function(){ afficherTableauClient();});  
 	//$("#entete").mouseleave(function(){ $("#zone3").empty(); });  
