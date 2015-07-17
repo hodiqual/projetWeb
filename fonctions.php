@@ -14,13 +14,18 @@ if (isset($_REQUEST['choix'])) {
 
 // ************** FONCTIONS APPELEES PAR AJAX
 
+
+
 // Retrouve l'image correspondant au spot
 function getImgSpot($idSpot) {
 	$urlFichier='photo/'.$idSpot.'.jpg';  // constitue nom du fichier photo
-	//$ret='<img src="'.$urlFichier.'" alt="" />';  // constitue contenu html <img .../>	
-	$idSpot++;
+	//$ret='<img src="'.$urlFichier.'" alt="" />';  // constitue contenu html <img .../>
+	require_once("./modele/spot.php");
+	$spotsManager = new SpotsManager(null);
+	$spot = $spotsManager->getAll()[$idSpot];
+	echo '<li>'.$spot->urlGoogleMap().'</li>';
 	?>
-	<div id="previsions_fsi_gratuites"></div>
+	<li><div id="previsions_fsi_gratuites"></div></li>
 	<script type="text/javascript">
 	<!--
 	var _fsi = _fsi || [];
@@ -37,7 +42,7 @@ function getImgSpot($idSpot) {
 	_fsi.push([
 			_config,
 			['_setAuthCode', '9JJx-ULjHH-zrNM'],
-			['_setSpot', '<?php echo $idSpot ?>'],
+			['_setSpot', '<?php echo $spot->idFSI() ?>'],
 			['_setTypeExport', 'W_300'],
 			['_showAll', false]
 	]);
@@ -52,3 +57,4 @@ function getImgSpot($idSpot) {
 <?php
 }
 ?>
+

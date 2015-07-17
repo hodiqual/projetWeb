@@ -1,5 +1,6 @@
 <?php
 	include "modele/createur.php";
+	include "modele/spot.php";
 	include "template.php";
 	ecrireHead();
 	ecrireSlider();
@@ -181,9 +182,9 @@
             	<p class="contact-name">
             		Spot:
             		<select id="idSpot" name="idSpot">
-            			<option value="0">Lacanau</option>
-            			<option value="1">La Torche</option>
-            			<option value="2">Biscarosse</option>
+            			<option value="Lacanau">Lacanau</option>
+            			<option value="La Torche">La Torche</option>
+            			<option value="Nice">Nice</option>
             		</select>
             	</p>
             	<p class="contact-name">
@@ -212,7 +213,7 @@
         
         <div class="span3">
         	<div class="contact-details">
-        		<h3>Prev et Photo</h3>
+        		<h3>INFO SPOT</h3>
                 <ul>
                     <li><a id="photoSpot" href="#">hello@brushed.com</a></li>
                     <li>Du spot choisi</li>
