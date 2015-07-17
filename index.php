@@ -183,11 +183,14 @@
             		Spot:
             		<select id="idSpot" name="idSpot">
             			<?php
-							
+								require_once("./modele/spot.php");
+								$spotsManager = new SpotsManager(null);
+								$spots = $spotsManager->getAll();
+								foreach($spots as $spot)
+								{
+									echo '<option value="'.$spot->nomSpot().'">'.$spot->nomSpot().'</option>';
+								}
 						?>
-            			<option value="Lacanau">Lacanau</option>
-            			<option value="La Torche">La Torche</option>
-            			<option value="Nice">Nice</option>
             		</select>
             	</p>
             	<p class="contact-name">
