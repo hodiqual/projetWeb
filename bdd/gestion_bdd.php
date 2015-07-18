@@ -1,18 +1,18 @@
 <?php
 /************** FONCTIONS MODELE (gestion de la base de données) ***************/
 
+DEFINE ("dbHost", "localhost"); 				// nom du serveur
+DEFINE ("dbName", "IESSA14_Hodiquet_Thomas");	// nom de la base
+DEFINE ("dbUser", "iessa"); 					// login de l'utilisateur
+DEFINE ("dbPwd", "iessa"); 						// pwd de l'utilisateur
 
 // Pour se connecter à la base de données
 function connectDb() {
-	$dbHost = "localhost"; 						// serveur
-	$dbName = "IESSA14_Hodiquet_Thomas"; 	// nom de la base
-	$dbUser = "iessa"; 							// login de l'utilisateur
-	$dbPwd = "iessa"; 							// pwd de l'utilisateur
 	try {
-	$connecteur = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUser, $dbPwd);
+	$connecteur = new PDO("mysql:host=".dbHost.";dbname=".dbName, dbUser, dbPwd);
 	} catch (PDOException $e)
 	{
-		echo "Connection à la base de données échouée : " .$e->getMessage();
+		echo "Connection à la base de données échouée : ".$e->getMessage();
 		exit;
 	}
 	return $connecteur;
@@ -37,6 +37,7 @@ function authentifier() {
 	else 
 	{
 		echo "Erreur d'authentification";
+		session_unset();
 		session_destroy();
 	}
 	$sth->closeCursor(); 	// déconnexion de la bdd
