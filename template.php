@@ -1,4 +1,5 @@
 <?php
+require_once 'modele/Membre.php';
 
 function ecrireHead()
 {
@@ -287,7 +288,12 @@ function ecrireNav()
 				<li><a href="#propose">Je propose</a></li>
 				<li><a href="#CV">CV</a></li>
 				<li><a href="auth_form.php"
-					class="fancybox-conn_profil font-icon-user-border"> Connexion</a></li>
+					class="fancybox-conn_profil font-icon-user-border">
+					<?php 
+					if (isset($_SESSION['Membre'])) {
+								echo $_SESSION['Membre']->prenom();
+							}
+					?></a></li>
 			</ul>
 		</nav>
 
