@@ -15,7 +15,7 @@ $(document).ready(function() {     // alert( "ready" );
 		$("#idSpot").change(function(){	afficherPhoto($(this));});  //$(this) permet de rÈcupÈrer en para l'objet select particulier sur lequel survient le changement	
 	}	
 	
-	$(".fancybox-conn_profil").fancybox({
+	/*$(".fancybox-conn_profil").fancybox({
 		openEffect  : 'none',
 		closeEffect : 'none',
 		afterLoad   : function() {
@@ -23,7 +23,25 @@ $(document).ready(function() {     // alert( "ready" );
 			this.inner.prepend( '<h4>1. My custom title</h4>' );
 			this.content = '<h4>2. My custom title</h4>' + this.content.html();
 		}
-	});
+	});*/
+	
+	$(".fancybox-conn_profil").fancybox({ 			
+		'hideOnContentClick'		: true,
+		'padding'			: 0,
+		'overlayColor'			:'#D3D3D3',
+		'transitionIn'			:'elastic',
+		'transitionOut'			:'elastic',
+		'overlayOpacity'		: 0.7,
+		'zoomSpeedIn'			: 300,
+		'zoomSpeedOut'			: 300,
+		'width'				: 950,
+		'height'			: 400,
+		'type'				:'iframe',
+		'afterClose' : function() {
+	        location.reload();
+	        return;
+	    }
+		});
 	
 	$("#propose_submit").click(function(){
 		console.log('DEBUG propose_submit la ca marche');
@@ -50,29 +68,7 @@ $(document).ready(function() {     // alert( "ready" );
 		});
 	
 	
-	$("#connexion_submit").click(function(){
-		console.log('DEBUG connexion_submit la ca marche');
-		
-		$auth_form = $('#connexion-form');
-		var fields = $auth_form.serialize();
-		
-		$.ajax({
-			type: "GET",
-			url: "auth.php",
-			data: fields,
-			dataType: 'json',
-			success: function(response) {
-				console.log('DEBUG propose_submit SUCCESS');
-				if(response.status){
-					$('#connexion-form input').val('');
-				}
-				
-				$('#connexion-response').empty().html(response.html);
-			}
-		});
-		
-		console.log('DEBUG  connexion_submit ca marche jusqua la fin');
-		});
+	
 	
 	
 	// gestion de l'affichage du tab des clients

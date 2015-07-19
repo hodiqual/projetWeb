@@ -177,11 +177,22 @@ function ecrireFooter()
 	<a id="back-to-top" href="#"> <i class="font-icon-arrow-simple-up"></i>
 	</a>
 	<!-- End Back to Top -->
+<?php
+ecrireScript(); ?>
+<script type="text/javascript" src="js/co_glisse.js"></script>
+<?php 
+ecrireFermeturePage();
+}
+?>
+
+<?php 
+function ecrireScript() {
+	?>
 
 	<!-- Script Maison -->
 	<script type="text/javascript" src="js/jquery-2.1.3.js"></script>
 	<!-- jQuery Core -->
-	<script type="text/javascript" src="js/co_glisse.js"></script>
+
 	<!-- Js -->
 	<script
 		src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -208,13 +219,15 @@ function ecrireFooter()
 	<!-- Default JS -->
 	<!-- End Js -->
 
+	<?php
+}?>
 
-
-</body>
-</html>
-<?php
-}
-?>
+<?php function ecrireFermeturePage() {
+	?>
+	</body>
+		</html>	
+	<?php 
+}?>
 
 <?php 
 function ecrireSlider()
@@ -273,24 +286,8 @@ function ecrireNav()
 				<li><a href="#cherche">Je cherche</a></li>
 				<li><a href="#propose">Je propose</a></li>
 				<li><a href="#CV">CV</a></li>
-				<li><a href="#conn_profil"
+				<li><a href="auth_form.php"
 					class="fancybox-conn_profil font-icon-user-border"> Connexion</a></li>
-				<div id="conn_profil"> <?php //TODO style="display: none; width: 300px;" ?>
-					<div class="tabbable">
-						<ul class="nav nav-tabs" id="myTab">
-							<li class="active"><a href="#connection" data-toggle="tab">Connexion</a></li>
-							<li><a href="#profil" data-toggle="tab">Inscription</a></li>
-						</ul>
-						<div class="tab-content">
-							<div class="tab-pane fade in active" id="connection">
-								<?php ecrireConnexionForm(); ?>
-							</div>
-							<div class="tab-pane fade in" id="profil">
-								Formulaire d inscription
-							</div>
-						</div>
-					</div>
-				</div>
 			</ul>
 		</nav>
 
