@@ -45,13 +45,16 @@
                         
 							<!-- Item Project and Filter Name -->
                         	<li class="item-thumbs span3 design">
+                        	
                             	<!-- Fancybox - Gallery Enabled - Title - Full Image -->
                             	<a class="hover-wrap fancybox" data-fancybox-group="gallery" title="The PROUT" href="_include/img/work/full/image-01-full.jpg">
                                 	<span class="overlay-img"></span>
                                     <span class="overlay-img-thumb font-icon-plus"></span>    
                                 </a>
                                 <!-- Thumb Image and Description -->
+                                Paris -> Lacanau - 23/12/2015
                                 <img src="_include/img/work/thumbs/image-01.jpg" alt="&lt;a href=&quot;&quot;&gt;PROUT&lt;/a&gt; Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
+                                3 pax sur 5 -<a href="#" class="font-icon-user-border" id="connexion_submit">Go-Cancel</a>
                             </li>
                         	<!-- End Item Project -->
                             
@@ -224,6 +227,7 @@
 </div>
 </div>
 <!-- End Je propose Section -->
+
 
 <?php
 	// section CV
