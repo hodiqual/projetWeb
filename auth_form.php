@@ -8,6 +8,7 @@ ecrireHead();
 		<ul class="nav nav-tabs" id="myTab">
 			<li class="active"><a href="#connection" data-toggle="tab">Connexion</a></li>
 			<li><a href="#profil" data-toggle="tab">Inscription</a></li>
+			<li style="display: none;"><a href="#deconnection" data-toggle="tab">Deconnection</a></li>
 		</ul>
 		<div class="tab-content">
 			<div class="tab-pane fade in active" id="connection">
@@ -15,7 +16,12 @@ ecrireHead();
 					      ecrireConnexionForm(); 
 					 ?>
 			</div>
-			<div class="tab-pane fade in" id="profil">Formulaire d inscription</div>
+			<div class="tab-pane fade in" id="profil">
+					Formulaire d inscription
+			</div>
+			<div class="tab-pane fade in" id="deconnection">
+					Formulaire de deconnection
+			</div>
 		</div>
 	</div>
 </div>

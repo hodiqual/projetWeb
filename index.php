@@ -54,7 +54,7 @@
                                 <!-- Thumb Image and Description -->
                                 Paris -> Lacanau - 23/12/2015
                                 <img src="_include/img/work/thumbs/image-01.jpg" alt="&lt;a href=&quot;&quot;&gt;PROUT&lt;/a&gt; Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
-                                3 pax sur 5 -<a href="#" class="font-icon-user-border" id="connexion_submit">Go-Cancel</a>
+                                3 pax sur 5 -<a href="#" class="font-icon-user-border" >Go-Cancel</a>
                             </li>
                         	<!-- End Item Project -->
                             
