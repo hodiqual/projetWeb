@@ -10,13 +10,6 @@
 	ecrireNav();
 	ecrireJeChercheSection();
 	ecrireJeProposeSection();
-?>
-
-
-
-
-
-<?php
 	// section CV
 	$tabCreateur = Createur::getCreateurArray();
 	ecrireCreateurs($tabCreateur);
