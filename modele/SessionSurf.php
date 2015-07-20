@@ -137,7 +137,28 @@ class SessionSurf
 class SessionSurfsManager extends ManagerDB {
 	
 	function getAll() {
-		;
+		
+		$sessionSurfs=array();
+		
+		$dbh = $this->_db; 	// connexion à la bdd
+		$sql = "SELECT noSes FROM SessionSurf";
+		$result = $dbh->query($sql);
+		if ($result)
+		{
+			while  ($occ = $result->fetch(PDO::FETCH_ASSOC))
+			{
+				
+				$sessionSurfs[] = $this->loadComplet($occ['noSes']);
+				//echo '<option value="'."DEBUG".'">'.$occ['nomSpot'].'</option>';
+				//$spots[$occ['nomSpot']] = new Spot($occ);  // construit un objet Spot et l'ajoute au tableau
+			}
+		}
+		else 
+		{
+			print($dbh->errorInfo());
+		}
+			
+		return($sessionSurfs);
 	}
 	
 	function loadComplet($noSes) {
