@@ -56,6 +56,33 @@ class SessionSurf
 		}
 	}
 	
+	public function nbPlacesTotal()
+	{
+		$nbrPlacesTotal = 0;
+		foreach ($this->_listeVehiculeSessionSurfs as $VSS)
+			$nbrPlacesTotal += $VSS->nbrPlacesDispo();
+		return $nbrPlacesTotal;
+	}
+	
+	//return true si il y a au moins une place
+	public function disponibilitePlace()
+	{
+		return ($this->nbPlacesTotal() - count($this->_listeParticipants)) >= 1;
+	}
+	
+	public function nbPlacesPlanchesTotal()
+	{
+		$nbrPlacesPlanchesTotal = 0;
+		foreach ($this->_listeVehiculeSessionSurfs as $VSS)
+			$nbrPlacesPlanchesTotal += $VSS->nbrPlanchesDispo();
+		return $nbrPlacesPlanchesTotal;
+	}
+	
+	//return true si il y a au moins une place pour une planche
+	public function disponibilitéPlacePlanches() {
+		return ($this->nbPlacesPlanchesTotal() - $this->_nbrPlanchesBooked) >= 1;
+	}
+	
 	public function setNbrPlanchesBooked( $nbrPlanchesBooked )
 	{
 		$nbrPlanchesBooked = (int) $nbrPlanchesBooked;
@@ -116,6 +143,7 @@ class SessionSurfsManager extends ManagerDB {
 		if ($sessionSurf) {
 			$this->chargerParticipants($sessionSurf);
 			$this->chargerListeVehSessionSurf($sessionSurf);
+			$this->chargerNbrPlanchesBooked($sessionSurf);
 		}
 		
 		return $sessionSurf;
@@ -172,6 +200,33 @@ class SessionSurfsManager extends ManagerDB {
 		}
 		
 		$sessionSurf->setListeVehiculeSessionSurfs($listeVehSessionSurf);
+	}
+	
+	function chargerNbrPlanchesBooked(SessionSurf $sessionSurf) {
+		$dbh = $this->_db;
+		$sql = "SELECT count(*) AS nbr FROM Participe WHERE noSes = :noSes AND avecPlanche != 0;";
+		$sth = $dbh->prepare($sql);
+		$sth->bindParam(":noSes", $sessionSurf->noSes(), PDO::PARAM_STR);
+		$bool = $sth->execute();
+		if ($result = $sth->fetch(PDO::FETCH_ASSOC)) // on charge les paramètres de l'utilisateur
+		{
+			$sessionSurf->setNbrPlanchesBooked($result['nbr']);
+		}
+	}
+	
+	function ajoutParticipant(SessionSurf $sessionSurf,Membre $membre,boolean $avecPlanche) {
+		$dbh = connectDb();				// connexion à la bdd
+		$sql = "INSERT INTO Participe VALUES (:noMem, :noSes, :avecPlanche);";
+		$sth = $dbh->prepare($sql);
+		$sth->bindParam(":noMem", $membre->noMem(), PDO::PARAM_STR);
+		$sth->bindParam(":noSes", $sessionSurf->noSes(), PDO::PARAM_STR);
+		$sth->bindParam(":noPlanche", $avecPlanche ? 1 : 0, PDO::PARAM_STR);
+		if ($sth->execute() == 0)
+			print($dbh->errorInfo()); 	// affiche message d'érreur de la bdd
+	}
+	
+	function ajoutVSS(SessionSurf $sessionSurf,Membre $membre, $noVeh, $nbrPlace, $nbrPlanche) {
+		
 	}
 	
 }
