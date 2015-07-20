@@ -51,12 +51,12 @@ $(document).ready(function() {     // alert( "ready" );
 		}
 	});
 	
-	$("#login_form").bind("submit", function() {
-		alert("DEBUG PROUT");
+	$(".session-inscription").bind("submit", function() {
+		console.log("DEBUG PROUT");
 
-		$(this).serializeArray()
+		//$(this).serializeArray()
 		//$.fancybox.showActivity();
-		alert("DEBUG APRES SERIALIZE");
+		console.log("DEBUG APRES SERIALIZE");
 		
 		$.ajax({
 			type		: "POST",
@@ -64,13 +64,13 @@ $(document).ready(function() {     // alert( "ready" );
 			url		: "sessionSurf.php",
 			data		: $(this).serializeArray(),
 			success: function(data) {
-				alert("DEBUG SUCCESS STORY");
+				console.log("DEBUG SUCCESS STORY");
 				$.fancybox(data);
 			},
-			error:function(){ alert("DEBUG ERROR STORY") }
+			error:function(){ console.log("DEBUG ERROR STORY") }
 		});
 
-		alert("DEBUG NOT A SUCCESS STORY");
+		console.log("DEBUG NOT A SUCCESS STORY");
 		return false;
 	});
 	

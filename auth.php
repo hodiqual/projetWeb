@@ -9,7 +9,7 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
 header('Content-type: application/json');
 
 
-class Propose_Form{
+class Auth_Form{
 	function __construct($details){
 		
 		$this->mdp = stripslashes($details['mdp']);
@@ -94,7 +94,7 @@ class Propose_Form{
 }
 
 
-$propose_form = new Propose_Form($_REQUEST);
-$propose_form->sendRequest();
+$auth_form = new Auth_Form($_REQUEST);
+$auth_form->sendRequest();
 
 ?>

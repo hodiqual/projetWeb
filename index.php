@@ -47,7 +47,7 @@
                         	<li class="item-thumbs span3 design">
                         	
                             	<!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                            	<a class="hover-wrap fancybox-session" data-fancybox-group="gallery" title="The PROUT" href="#login_form">
+                            	<a class="hover-wrap fancybox-session" data-fancybox-group="gallery" title="Paris -> Lacanau - 23/12/2015" href="#session-3">
                                 	<span class="overlay-img"></span>
                                     <span class="overlay-img-thumb font-icon-plus"></span>    
                                 </a>
@@ -56,19 +56,32 @@
                                 <img src="_include/img/work/thumbs/image-01.jpg" alt="&lt;a href=&quot;&quot;&gt;PROUT&lt;/a&gt; Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
                                 3 pax sur 5
                                 
-                                <div style="display:none">
-									<form id="login_form" method="post" action="">
-									    	<p id="login_error">Please, enter data</p>
+                                <div style="display:none"> <?php //TODO ?>
+									<form id="session-3" class="session-inscription" method="post" action="">
+										<input type="hidden" name="noSes" value="3">
+										<input type="hidden" name="choix" value="session-inscription">
+									    <p id="status">Je pars ...</p>
 										<p>
-											<label for="login_name">Login: </label>
-											<input type="text" id="login_name" name="login_name" size="30" />
+											<label for="avecVehicule">Je prends mon véhicule </label>
+											<select id="idVehicule" name="idVehicule">
+												<option value='0'>Je ne prends pas ma voiture</option>
+						            			<?php
+														/*require_once("./modele/spo.php");
+														$spotsManager = new SpotsManager(null);
+														$spots = $spotsManager->getAll();
+														foreach($spots as $spot)
+														{
+															echo '<option value="'.$spot->nomSpot().'">'.$spot->nomSpot().'</option>';
+														}*/
+												?>
+						            		</select>
 										</p>
 										<p>
-											<label for="login_pass">Password: </label>
-											<input type="password" id="login_pass" name="login_pass" size="30" />
+											<label for="avecPlanche">Avec ma board: </label>
+											<input type="checkbox" id="avecPlanche" name="avecPlanche" size="30" />
 										</p>
 										<p>
-											<input type="submit" value="Login" />
+											<input type="submit" value="Je pars avec vous ..." />
 										</p>
 										<p>
 										    <em>Leave empty so see resizing</em>
