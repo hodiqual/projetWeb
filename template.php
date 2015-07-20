@@ -522,8 +522,8 @@ function ecrireJeChercheSection() {
 		$session_class = str_replace ( ' ', '', strtolower ( $sessionsurf->spot ()->nomSpot () ) );
 		?>
 	                    				<!-- Item SessionSurf and Filter Name -->
-							<li class="item-thumbs span3 <?php echo $session_class;?>">
-	                        				<?php echo $session_title;?>	
+							<li id="item-$session_id;" class="item-thumbs span3 <?php echo $session_class;?>">
+	                        				<div align="center"> <?php echo $session_title;?>	</div>
 	                             			<!-- Fancybox - Gallery Enabled - Title - Full Image -->
 								<a class="hover-wrap fancybox-session"
 								data-fancybox-group="gallery"
@@ -584,7 +584,7 @@ function ecrireJeChercheSection() {
 									</form>
 								</div>
 									
-	                                		<?php echo $session_date;?>                       			
+	                                		<div align="center"><?php echo $session_date;?></div>                   			
 	                        			</li>
 							<!-- End Item SessionSurf -->
 	                    		<?php

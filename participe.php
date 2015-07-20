@@ -70,7 +70,8 @@ class Participe_Form{
 			$manager->ajoutParticipant($sessionSurf, $membre->noMem(), $this->avecPlanche);
 			$this->response_status = 1;
 			$this->response_html = '<p>Cool '.$_SESSION['Membre']->prenom().', inscris dans ton agenda:</p>';
-			$this->response_html .= '<p>RDV: '.$sessionSurf->lieuDep().' pour '.$sessionSurf->spot()->nomSpot().' le '.$sessionSurf->dateAller().'</p>';
+			$dateAllerObj = new DateTime($sessionSurf->dateAller());
+			$this->response_html .= '<p>RDV: '.$sessionSurf->lieuDep().' pour '.$sessionSurf->spot()->nomSpot().' le '.$dateAllerObj->format('d/m/Y à H:m').'</p>';
 		}
 	}
 
