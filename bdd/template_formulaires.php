@@ -41,6 +41,13 @@ function formInscription() {
 		<input type="text" name="prenom" placeholder="Prenom" required/>
 		<input type="text" name="email" placeholder="Adresse mail" required/>
 		<input type="password" name="mdp" placeholder="Mot de passe" required/>
+		<h3>Avez-vous un véhicule ?</h3>
+		<input type="text" name="marqueVeh" placeholder="Marque"/>
+		<input type="text" name="modelVeh" placeholder="Modele"/>
+		<input type="text" name="couleurVeh" placeholder="Couleur"/>
+		<input type="file" name="photoVeh" placeholder="Votre fichier photo"/>
+		<input type="text" name="nbrPlaces" placeholder="Nombre de places" required/>
+		<input type="password" name="nbrPlanches" placeholder="Nombre de planches transportables" required/>
 		<button class="button" type="submit" name="choix" value="inscription"> Valider </button>
 	</form>';
 return $formInscription;
