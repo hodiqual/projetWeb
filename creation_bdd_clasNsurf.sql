@@ -72,6 +72,7 @@ CREATE TABLE IF NOT EXISTS Participe
 (
 	noMem 				INT NOT NULL,
 	noSes 				INT NOT NULL,
+	avecPlanche			TINYINT NOT NULL,
 	PRIMARY KEY(noMem, noSes),
 	FOREIGN KEY(noMem) REFERENCES Membre(noMem)  ON DELETE CASCADE,
 	FOREIGN KEY(noSes) REFERENCES SessionSurf(noSes)  ON DELETE CASCADE
@@ -128,9 +129,9 @@ INSERT INTO `VehiculeSessionSurf` (`noVeh`, `noSes`, `nbrPlacesDispo`, `nbrPlanc
 
 
 -- Participe
-INSERT INTO `Participe` (`noMem`, `noSes`) VALUES
-(1, 2),
-(2, 3);
+INSERT INTO `Participe` (`noMem`, `noSes`, `avecPlanche`) VALUES
+(1, 2, 0),
+(2, 3, 1);
 
 -- Propose
 INSERT INTO `Propose` (`noMem`, `noSes`) VALUES

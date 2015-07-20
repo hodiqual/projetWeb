@@ -1,8 +1,8 @@
 <?php
-	session_start();
 	include "modele/createur.php";
 	include "modele/spot.php";
 	include "template.php";
+	session_start();
 	ecrireHead();
 	ecrireSlider();
 	ecrireNav();
@@ -47,7 +47,7 @@
                         	<li class="item-thumbs span3 design">
                         	
                             	<!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                            	<a class="hover-wrap fancybox-session" data-fancybox-group="gallery" title="Paris -> Lacanau - 23/12/2015" href="#session-3">
+                            	<a class="hover-wrap fancybox-session" data-fancybox-group="gallery" title="Paris -> Lacanau - 23/12/2015" href="#session-2">
                                 	<span class="overlay-img"></span>
                                     <span class="overlay-img-thumb font-icon-plus"></span>    
                                 </a>
@@ -57,14 +57,18 @@
                                 3 pax sur 5
                                 
                                 <div style="display:none"> <?php //TODO ?>
-									<form id="session-3" class="session-inscription" method="post" action="">
-										<input type="hidden" name="noSes" value="3">
+									<form id="session-2" class="session-inscription" method="post" action="">
+										<input type="hidden" name="noSes" value="2">
 										<input type="hidden" name="choix" value="session-inscription">
 									    <p id="status">Je pars ...</p>
 										<p>
+											<label for="avecPlanche">Avec ma board: </label>
+											<input type="checkbox" id="avecPlanche" name="avecPlanche" size="30" />
+										</p>
+										<p>
 											<label for="avecVehicule">Je prends mon véhicule </label>
-											<select id="idVehicule" name="idVehicule">
-												<option value='0'>Je ne prends pas ma voiture</option>
+											<select id="avecVehicule" name="noVeh">
+												<option value='-1'>Je ne prends pas ma voiture</option>
 						            			<?php
 														/*require_once("./modele/spo.php");
 														$spotsManager = new SpotsManager(null);
@@ -77,8 +81,10 @@
 						            		</select>
 										</p>
 										<p>
-											<label for="avecPlanche">Avec ma board: </label>
-											<input type="checkbox" id="avecPlanche" name="avecPlanche" size="30" />
+											<input type="text" pattern="[1-4]" placeholder="Nombre de places dispo" id="nbrPlacesDispo" name="nbrPlacesDispo">
+										</p>
+										<p>
+											<input type="text" pattern="[1-4]" placeholder="Nombre de places pour planches dispo" id="nbrPlanchesDispo" name="nbrPlanchesDispo">
 										</p>
 										<p>
 											<input type="submit" value="Je pars avec vous ..." />

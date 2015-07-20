@@ -59,9 +59,9 @@ $(document).ready(function() {     // alert( "ready" );
 		console.log("DEBUG APRES SERIALIZE");
 		
 		$.ajax({
-			type		: "POST",
+			type		: "GET",
 			cache	: false,
-			url		: "sessionSurf.php",
+			url		: "participe.php",
 			data		: $(this).serializeArray(),
 			success: function(data) {
 				console.log("DEBUG SUCCESS STORY");
