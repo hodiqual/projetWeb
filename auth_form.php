@@ -17,7 +17,9 @@ ecrireHead();
 					 ?>
 			</div>
 			<div class="tab-pane fade in" id="profil">
-					Formulaire d inscription
+					<?php require_once 'template.php';
+					      ecrireInscriptionForm(); 
+					 ?>
 			</div>
 			<div class="tab-pane fade in" id="deconnection">
 					Formulaire de deconnection
