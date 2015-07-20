@@ -18,11 +18,11 @@ class SQLTest extends PHPUnit_Framework_TestCase {
 	}
 }*/
 
-class TestGestionBdd extends PHPUnit_Framework_TestCase {
-	public function testGestionBdd() {
-		$sqlGestionBdd = new SqlGestionBdd();
-		$doc = $sqlGestionBdd->main();
-		$this->assertNotEquals($gestionBdd, false);
+class CreationBddTest extends PHPUnit_Framework_TestCase {
+	public function testCreationBdd() {
+		$creationBdd = new CreationBdd();
+		$doc = $creationBdd->main();
+		$this->assertNotEquals($doc, false);
 	}
 }
 
