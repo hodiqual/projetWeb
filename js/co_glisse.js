@@ -43,6 +43,37 @@ $(document).ready(function() {     // alert( "ready" );
 	    }
 		});
 	
+	$(".fancybox-session").fancybox({
+		'scrolling'		: 'no',
+		'titleShow'		: false,
+		'onClosed'		: function() {
+		    $("#login_error").hide();
+		}
+	});
+	
+	$("#login_form").bind("submit", function() {
+		alert("DEBUG PROUT");
+
+		$(this).serializeArray()
+		//$.fancybox.showActivity();
+		alert("DEBUG APRES SERIALIZE");
+		
+		$.ajax({
+			type		: "POST",
+			cache	: false,
+			url		: "sessionSurf.php",
+			data		: $(this).serializeArray(),
+			success: function(data) {
+				alert("DEBUG SUCCESS STORY");
+				$.fancybox(data);
+			},
+			error:function(){ alert("DEBUG ERROR STORY") }
+		});
+
+		alert("DEBUG NOT A SUCCESS STORY");
+		return false;
+	});
+	
 	$("#propose_submit").click(function(){
 		console.log('DEBUG propose_submit la ca marche');
 		
