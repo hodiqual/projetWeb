@@ -131,7 +131,8 @@ INSERT INTO `VehiculeSessionSurf` (`noVeh`, `noSes`, `nbrPlacesDispo`, `nbrPlanc
 -- Participe
 INSERT INTO `Participe` (`noMem`, `noSes`, `avecPlanche`) VALUES
 (1, 2, 0),
-(2, 3, 1);
+(2, 3, 1),
+(1, 3, 0);
 
 -- Propose
 INSERT INTO `Propose` (`noMem`, `noSes`) VALUES
