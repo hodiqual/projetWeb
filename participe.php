@@ -1,4 +1,5 @@
 <?php
+require_once 'modele/Membre.php';
 session_start();
 
 class Participe_Form{
@@ -47,36 +48,30 @@ class Participe_Form{
 		
 		//Si propose pas de vehicule on verifie le nombre de place disponible
 		if ($this->noVeh == -1) {
-			echo ' DEBUG participe.php dispototal '.$sessionSurf->nbPlacesTotal().' ';
+			//echo ' DEBUG participe.php dispototal '.$sessionSurf->nbPlacesTotal().' ';
 			if(!($sessionSurf->disponibilitePlace()))
 			{
-				echo ' DEBUG participe.php boolPlace '.$sessionSurf->disponibilitePlace().' ';
+				//echo ' DEBUG participe.php boolPlace '.$sessionSurf->disponibilitePlace().' ';
 				$this->response_html .= '<p>Pas de place disponible dans les vehicules, vous pouvez proposer un vehicule.</p>';
 				$this->response_status = 0;
 			}
 			
-			if($this->avecPlanche && !$sessionSurf->disponibilitePlanche())
+			if($this->avecPlanche && !$sessionSurf->disponibilitePlacePlanche())
 			{
 				$this->response_html .= '<p>Pas de place disponible pour ta planche, tu peux louer sur-place.</p>';
 				$this->response_status = 0;
-				return;
 			}	
 		}
 		
-		/*if($membre)
+		if($this->response_status)
 		{
-			$manager->chargerVehicule($membre);
-			$_SESSION['Membre'] = $membre;
+			require_once 'modele/Membre.php';
+			$membre = $_SESSION['Membre'];
+			$manager->ajoutParticipant($sessionSurf, $membre->noMem(), $this->avecPlanche);
 			$this->response_status = 1;
-			$this->response_html = '<p>Cool '.$membre->prenom().', prêt pour une session ...</p>';
+			$this->response_html = '<p>Cool '.$_SESSION['Membre']->prenom().', inscris dans ton agenda:</p>';
+			$this->response_html .= '<p>RDV: '.$sessionSurf->lieuDep().' pour '.$sessionSurf->spot()->nomSpot().' le '.$sessionSurf->dateAller().'</p>';
 		}
-		else
-		{
-			session_unset();
-			session_destroy();
-			$this->response_status = 0;
-			$this->response_html = '<p>Pas Cool, email inconnu ou mot de passe invalide.</p>';			
-		} */
 	}
 
 	function sendRequest(){
@@ -99,10 +94,7 @@ class Participe_Form{
 		
 		//echo json_encode($response);
 		
-		if ($this->response_status) {
-			echo 'INSCRIT A LA SESSION';
-		}else 
-			echo $this->response_html;
+		echo $this->response_html;
 
 		
 	}

@@ -106,9 +106,9 @@ INSERT INTO `Membre` (`noMem`, `nom`, `prenom`, `avatar`, `email`, `mdp`) VALUES
 
 -- SessionSurf
 INSERT INTO `SessionSurf` (`noSes`, `nomSpot`, `dateAller`, `dateRetour`, `lieuDep`) VALUES
-(1, 'Anglet', '2015-07-18 22:00:00', '2015-07-18 22:00:00', ''),
-(2, 'Dieppe', '2015-07-19 22:00:00', '2015-07-21 22:00:00', NULL),
-(3, 'Lacanau', '2015-07-19 22:00:00', '2015-07-22 22:00:00', NULL);
+(1, 'Anglet', '2015-07-18 22:00:00', '2015-07-18 22:00:00', 'Paris'),
+(2, 'Dieppe', '2015-07-19 22:00:00', '2015-07-21 22:00:00', 'Cannes'),
+(3, 'Lacanau', '2015-07-19 22:00:00', '2015-07-22 22:00:00', 'Toulouse');
 
 -- Vehicule
 INSERT INTO `Vehicule` (`noVeh`, `nbrPlaces`, `nbrPlanches`, `marqueVeh`, `modeleVeh`, `couleurVeh`, `photoVeh`) VALUES
@@ -120,15 +120,16 @@ INSERT INTO `Participe` (`noMem`, `noSes`) VALUES
 (1, 2),
 (2, 3);
 
--- Possede
-INSERT INTO `Possede` (`noMem`, `noVeh`) VALUES
-(2, 1),
-(1, 2);
+-- Participe
+INSERT INTO `Participe` (`noMem`, `noSes`, `avecPlanche`) VALUES
+(1, 2, 0),
+(2, 3, 1);
 
 -- Propose
 INSERT INTO `Propose` (`noMem`, `noSes`) VALUES
 (1, 1),
-(2, 2);
+(2, 2),
+(1, 3);
 
 -- VehiculeSessionSurf
 INSERT INTO `VehiculeSessionSurf` (`noVeh`, `noSes`, `nbrPlacesDispo`, `nbrPlanchesDispo`) VALUES

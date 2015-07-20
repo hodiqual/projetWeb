@@ -1,5 +1,6 @@
 <?php
 require_once 'spot.php';
+require_once 'Membre.php';
 
 class SessionSurf
 {
@@ -79,7 +80,7 @@ class SessionSurf
 	}
 	
 	//return true si il y a au moins une place pour une planche
-	public function disponibilitéPlacePlanches() {
+	public function disponibilitePlacePlanche() {
 		return ($this->nbPlacesPlanchesTotal() - $this->_nbrPlanchesBooked) >= 1;
 	}
 	
@@ -134,6 +135,7 @@ class SessionSurf
 }
 
 class SessionSurfsManager extends ManagerDB {
+	
 	function getAll() {
 		;
 	}
@@ -214,15 +216,15 @@ class SessionSurfsManager extends ManagerDB {
 		}
 	}
 	
-	function ajoutParticipant(SessionSurf $sessionSurf,Membre $membre,boolean $avecPlanche) {
-		$dbh = connectDb();				// connexion à la bdd
-		$sql = "INSERT INTO Participe VALUES (:noMem, :noSes, :avecPlanche);";
-		$sth = $dbh->prepare($sql);
-		$sth->bindParam(":noMem", $membre->noMem(), PDO::PARAM_STR);
-		$sth->bindParam(":noSes", $sessionSurf->noSes(), PDO::PARAM_STR);
-		$sth->bindParam(":noPlanche", $avecPlanche ? 1 : 0, PDO::PARAM_STR);
-		if ($sth->execute() == 0)
-			print($dbh->errorInfo()); 	// affiche message d'érreur de la bdd
+	function ajoutParticipant(SessionSurf $sessionSurf,$noMem,$avecPlanche) {
+		require_once 'Membre.php';
+		$conn = $this->_db;				// connexion à la bdd
+		$booleanPlanche = ($avecPlanche==true) ? '1' : '0';
+		
+		$sql = "INSERT INTO Participe VALUES(".$noMem.",".$sessionSurf->noSes().",".$booleanPlanche.");";
+		echo "DEBUG SessionSurf.php ".$sql." ";
+		if ($conn->exec($sql)==0)
+			print_r($conn->errorInfo());//affiche message d'erreur
 	}
 	
 	function ajoutVSS(SessionSurf $sessionSurf,Membre $membre, $noVeh, $nbrPlace, $nbrPlanche) {

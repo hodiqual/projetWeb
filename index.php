@@ -1,4 +1,5 @@
 <?php
+	include "modele/Membre.php";
 	include "modele/createur.php";
 	include "modele/spot.php";
 	include "template.php";
@@ -47,7 +48,7 @@
                         	<li class="item-thumbs span3 design">
                         	
                             	<!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                            	<a class="hover-wrap fancybox-session" data-fancybox-group="gallery" title="Paris -> Lacanau - 23/12/2015" href="#session-2">
+                            	<a class="hover-wrap fancybox-session" data-fancybox-group="gallery" title="Paris -> Lacanau - 23/12/2015" href="#session-3">
                                 	<span class="overlay-img"></span>
                                     <span class="overlay-img-thumb font-icon-plus"></span>    
                                 </a>
@@ -57,8 +58,8 @@
                                 3 pax sur 5
                                 
                                 <div style="display:none"> <?php //TODO ?>
-									<form id="session-2" class="session-inscription" method="post" action="">
-										<input type="hidden" name="noSes" value="2">
+									<form id="session-3" class="session-inscription" method="post" action="">
+										<input type="hidden" name="noSes" value="3">
 										<input type="hidden" name="choix" value="session-inscription">
 									    <p id="status">Je pars ...</p>
 										<p>
