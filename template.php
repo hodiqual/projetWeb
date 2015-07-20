@@ -396,4 +396,70 @@ function ecrireConnexionForm() {
 }
 ?>
 
+<?php
+function ecrireInscriptionForm() {
+?>
+<div class="row">
+	<div class="span9">
+		<form id="inscription-form" class="contact-form" action="#">
+			<h4>Mes coordonnées</h4>
+			<p class="contact-name">
+				<input id="inscription_nom" type="text" placeholder="Nom" value="" name="nom" required />
+			</p>
+			<p class="contact-name">
+				<input id="inscription_prenom" type="text" placeholder="Prenom" value="" name="prenom" required />
+			</p>
+			<p class="contact-email">
+				<input id="inscription_email" type="text" placeholder="Email" value="" name="email" required />
+			</p>
+			<p class="contact-name">
+				<input id="inscription_mdp" type="password" placeholder="Mot de passe" value="" name="mdp" required />
+			</p>
+
+			<h4>Mon véhicule</h4>
+			<p class="contact-name">
+				<input id="inscription_marqueVeh" type="text" placeholder="Marque" value="" name="marqueVeh" />
+			</p>
+			<p class="contact-name">
+				<input id="inscription_modeleVeh" type="text" placeholder="Modele" value="" name="modeleVeh" />
+			</p>
+			<p class="contact-name">
+				<input id="inscription_couleurVeh" type="text" placeholder="Couleur" value="" name="couleurVeh" />
+			</p>
+			<p class="contact-name">
+				Sélectionner une photo : <input id="inscription_photoVeh" type="file" value="" name="photoVeh" />
+			</p>
+			<p class="contact-name">
+				<select id="inscription_nbrPlaces" name="nbrPlaces" required >
+					<option value="">Nombre de places</option>
+					<?php
+						for($i=1 ; $i<=100 ; $i++) {
+							echo '<option value="'.$i.'">'.$i.'</option>';
+						}
+					?>
+				</select>
+			</p>
+			<p class="contact-name">
+				<select id="inscription_nbrPlanches" name="nbrPlanches" required >
+					<option value="">Nombre de planches possible</option>
+					<?php
+						for($i=1 ; $i<=100 ; $i++) {
+							echo '<option value="'.$i.'">'.$i.'</option>';
+						}
+					?>
+				</select>
+			</p>
+
+			<p class="contact-submit">
+				<a id="inscription_submit" class="button button-small" href="#">Inscription</a>
+			</p>
+
+			<div id="inscription-response"></div>
+		</form>
+	</div>
+</div>
+
+<?php
+}
+?>
 
