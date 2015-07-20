@@ -13,7 +13,7 @@ class SQL {
   }
 }
 
-class SqlGestionBdd {
+class CreationBdd {
 	public static function main() {
 		$con = mysqli_connect("127.0.0.1","shippable","","test");
     	$sql = file_get_contents("creation_bdd_clasNsurf.sql");
