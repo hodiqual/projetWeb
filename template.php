@@ -522,8 +522,8 @@ function ecrireJeChercheSection() {
 		$session_class = str_replace ( ' ', '', strtolower ( $sessionsurf->spot ()->nomSpot () ) );
 		?>
 	                    				<!-- Item SessionSurf and Filter Name -->
-							<li id="item-$session_id;" class="item-thumbs span3 <?php echo $session_class;?>">
-	                        				<div align="center"> <?php echo $session_title;?>	</div>
+							<li id="item-<?php echo $session_id;?>" class="item-thumbs span3 <?php echo $session_class;?>">
+	                        				<div align="center" class="font-icon-ok"> <?php echo $session_title;?>	</div>
 	                             			<!-- Fancybox - Gallery Enabled - Title - Full Image -->
 								<a class="hover-wrap fancybox-session"
 								data-fancybox-group="gallery"
@@ -578,9 +578,6 @@ function ecrireJeChercheSection() {
 											<p>
 											<input type="submit" value="Je pars avec vous ..." />
 										</p>
-										<p>
-											<em>Leave empty so see resizing</em>
-										</p>
 									</form>
 								</div>
 									
@@ -625,6 +622,21 @@ function ecrireJeProposeSection() {
 		</div>
 		<!-- End Title Page -->
 
+		<?php if (isset($_SESSION['Membre'])) {
+				ecrireJeProposeConnecte();
+			}else
+				ecrireJeProposeDeconnecte();?>
+		
+	</div>
+</div>
+<!-- End Je propose Section -->
+	
+<?php
+}?>
+
+<?php 
+function ecrireJeProposeConnecte() {
+?>
 		<!-- Contact Form -->
 		<div class="row">
 			<div class="span9">
@@ -705,11 +717,18 @@ function ecrireJeProposeSection() {
 				</div>
 			</div>
 		</div>
-		<!-- End Contact Form -->
-	</div>
-</div>
-<!-- End Je propose Section -->
-	
+		<!-- End Contact Form -->	
+<?php
+}?>
+
+<?php 
+function ecrireJeProposeDeconnecte() {
+?>
+			<div class="row">
+				<div class="span9">
+				 <h4 style="color:red">IL FAUT SE CONNECTER.</h3>
+				</div>
+			</div>
 <?php
 }?>
 

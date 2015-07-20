@@ -44,7 +44,8 @@ $(document).ready(function() {     // alert( "ready" );
 		});
 	
 	$(".fancybox-session").fancybox({
-		'scrolling'		: 'no',
+		'scrolling'		: 'yes',
+		'width'				: 400,
 		'titleShow'		: false,
 		'onClosed'		: function() {
 		    $("#login_error").hide();
@@ -55,7 +56,6 @@ $(document).ready(function() {     // alert( "ready" );
 		console.log("DEBUG PROUT");
 
 		//$(this).serializeArray()
-		//$.fancybox.showActivity();
 		console.log("DEBUG APRES SERIALIZE");
 		
 		$.ajax({
@@ -97,21 +97,11 @@ $(document).ready(function() {     // alert( "ready" );
 		
 		console.log('DEBUG  propose_submitla ca marche jusqua la fin');
 		});
-	
-	
-	
-	
-	
-	// gestion de l'affichage du tab des clients
-	//$("#entete").mouseover(function(){ afficherTableauClient();});  
-	//$("#entete").mouseleave(function(){ $("#zone3").empty(); });  
 
 });	  
 
 
-// fonction permettant de recupÈrer puis d'afficher la photo du contact selectionne
-// parametres : 
-// 1->element select qui a dÈclenche l'appel (sur change) 
+// fonction permettant de recupÈrer puis d'afficher les infos et les previsions du spot
 function afficherPhoto(sel) {  //alert('afficherPhoto');
 	console.log("DEBUG APPEL AFFICHE PHOTO");
    $.ajax({
@@ -121,38 +111,7 @@ function afficherPhoto(sel) {  //alert('afficherPhoto');
 		success:function(reponse){  // recup dans reponse du echo fait par la fonction getImg
 			$("#photoSpot").html(reponse);   // envoi la rÈponse dans la div photo => maj photo sur la page 
 		},
-		error:function(){ alert("erreur serveur lors de la recuperation de la photo");}
+		error:function(){ alert("erreur serveur lors de la recuperation des infos");}
 	});	   
 }
 
-/*
-
-function afficherTableauClient() { 
-   $.ajax({
-		type:"get",
-		url:'fonctions.php',   // script php appelÈ
-		data: 'choix=getTabClientJSon',  
-		success:function(reponse){  // recup dans reponse du echo fait par la fonction getTabClient
-
-			//alert(reponse);	
-			// transformation chaine de car en objet JSon (tab ‡ 2 dimensions)
-			var jsonobj = eval("(" + reponse + ")");
-			
-			var out = "<table>";
-			// constitution du tableau html ‡ afficher
-			for(var i=0; i<jsonobj.length; i++) {
-					obj = jsonobj[i];
-					out += "<tr><td>" +	obj.id +
-							"</td><td>" + obj.nom +
-							"</td><td>" + obj.mail +
-							"</td></tr>";		
-			}
-			out += "</table>";
-			
-			$("#zone3").html(out); // affichage du tableau dans la div id=zone3	
-		},
-		error:function(){ alert("erreur serveur lors de la recuperation du tableau client");}
-	});	   
-}
-
-*/
