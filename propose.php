@@ -1,8 +1,7 @@
 <?php
-/*
-* Contact Form Class
-*/
-
+require_once 'modele/Membre.php';
+require_once 'modele/SessionSurf.php';
+session_start();
 
 header('Cache-Control: no-cache, must-revalidate');
 header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
@@ -42,13 +41,20 @@ class Propose_Form{
 			$this->response_status = 0;
 		}
 		
+
+		if (strlen($this->proposition['lieuDep'])==0)
+		{
+			$this->response_html .= '<p style="color:red">Saisir le lieu de départ.</p>';
+			$this->response_status = 0;
+		}
+		
 		if (!isset($this->proposition['dateAller'])) 
 		{
-			$this->response_html .= '<p style="color:red">Saisir date aller</p>';
+			$this->response_html .= '<p style="color:red">Saisir date aller.</p>';
 			$this->response_status = 0;
 		}else if (!isset($this->proposition['heureAller']))
 		{
-			$this->response_html .= '<p style="color:red">Saisir heure aller</p>';
+			$this->response_html .= '<p style="color:red">Saisir heure aller.</p>';
 			$this->response_status = 0;
 		}else
 		{
@@ -78,15 +84,30 @@ class Propose_Form{
 				}
 			}
 		}
+		
+		if ($this->proposition['noVeh']>-1) {
+			if ($this->proposition['nbrPlacesDispo']<=0) {
+				$this->response_html .= '<p style="color:red">Saisir nombre de places dispo supérieur à 0</p>';
+				$this->response_status = 0;
+			}
+
+			if ($this->proposition['nbrPlanchesDispo']<=0) {
+				$this->response_html .= '<p style="color:red">Saisir nombre de places pour les planches dispo supérieur à 0</p>';
+				$this->response_status = 0;
+			}
+		}
 	}
 	
 	private function enregistrerSession(){
-		//TODO Faire enregistrement en base et tester le retour connection 
-		if($this->proposition)
-		{
-			$this->response_status = 1;
-			$this->response_html = '<p>Ok, Proposition enregistrée! RAJOUTER LE VEHICULE ET NB PLACE DISPO</p>';
-		}
+		require_once 'modele/SessionSurf.php';
+		require_once 'modele/Membre.php';
+		$sessionSurf = new SessionSurf($this->proposition);
+		$sessionSurf->setOrganisateur($_SESSION['Membre']);
+		$manager = new SessionSurfsManager(null);
+		$manager->ajoutSession($sessionSurf,$this->proposition['nomSpot'],$this->proposition['noVeh'],$this->proposition['nbrPlacesDispo'],$this->proposition['nbrPlanchesDispo']);
+		$this->response_status = 1;
+		$this->response_html = '<p>Ok, Proposition enregistrée! RAJOUTER LE VEHICULE ET NB PLACE DISPO</p>';
+	
 		
 		//$date = preg_replace( "/([0-9]{2})\/([0-9]{2})\/([0-9]{4})/i", "$3-$2-$1", $_POST['date']);
 		//$sql = "INSERT INTO blog SET date=now()";

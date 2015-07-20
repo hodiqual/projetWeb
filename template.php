@@ -520,7 +520,9 @@ function ecrireJeChercheSection() {
 	foreach ( $allSessionsSurfs as $sessionsurf ) {
 		$session_title = $sessionsurf->lieuDep () . ' -> ' . $sessionsurf->spot ()->nomSpot () . ' - ' . count ( $sessionsurf->listeParticipants () ) . ' pax';
 		$session_id = 'session-' . $sessionsurf->noSes ();
-		$session_date = 'Du ' . $sessionsurf->dateAller () . ' au ' . $sessionsurf->dateRetour ();
+		$dateAllerObj = new DateTime($sessionsurf->dateAller());
+		$dateRetourObj = new DateTime($sessionsurf->dateRetour());
+		$session_date = 'Du ' . $dateAllerObj->format('d-m-Y H:m') . ' au ' . $dateRetourObj->format('d-m-Y');
 		$session_class = str_replace ( ' ', '', strtolower ( $sessionsurf->spot ()->nomSpot () ) );
 		?>
 	                    				<!-- Item SessionSurf and Filter Name -->
@@ -539,7 +541,7 @@ function ecrireJeChercheSection() {
 								<div style="display: none">
 									<form id="<?php echo $session_id;?>"
 										class="session-inscription" method="post" action="">
-										<input type="hidden" name="noSes" value="3"> <input
+										<input type="hidden" name="noSes" value="<?php echo $sessionsurf->noSes();?>"> <input
 											type="hidden" name="choix" value="session-inscription">
 										<p id="status">Je pars ...</p>
 										<p>
@@ -643,6 +645,14 @@ function ecrireJeProposeSection() {
 								}
 						?>
             		</select>
+            		
+            		<p class="contact-name">
+						Lieu départ:
+						<input type="text" pattern="[1-9]"
+							   placeholder="Lieu de rdv pour le départ"
+							  name="lieuDep" required>
+					</p>
+					
 					</p>
 					<p class="contact-name">
 						Aller: <input id="propose-dateAller" type="date"

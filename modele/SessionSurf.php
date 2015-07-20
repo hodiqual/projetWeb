@@ -204,7 +204,7 @@ class SessionSurfsManager extends ManagerDB {
 		$sth->bindParam(":noSes", $sessionSurf->noSes(), PDO::PARAM_STR);
 		$bool = $sth->execute();
 		$listeMembre = array();
-		if ($result = $sth->fetch(PDO::FETCH_ASSOC)) // on charge les paramètres de l'utilisateur
+		while ($result = $sth->fetch(PDO::FETCH_ASSOC)) // on charge les paramètres de l'utilisateur
 		{
 			$listeMembre[] = new Membre($result);
 		}
@@ -248,12 +248,61 @@ class SessionSurfsManager extends ManagerDB {
 		$booleanPlanche = ($avecPlanche==true) ? '1' : '0';
 		
 		$sql = "INSERT INTO Participe VALUES(".$noMem.",".$sessionSurf->noSes().",".$booleanPlanche.");";
-		echo "DEBUG SessionSurf.php ".$sql." ";
+		//echo "DEBUG SessionSurf.php ".$sql." ";
 		if ($conn->exec($sql)==0)
 			print_r($conn->errorInfo());//affiche message d'erreur
 	}
 	
-	function ajoutVSS(SessionSurf $sessionSurf,Membre $membre, $noVeh, $nbrPlace, $nbrPlanche) {
+	function ajoutVSS(SessionSurf $sessionSurf, $noVeh, $nbrPlace, $nbrPlanche) {
+		$dbh = $this->_db;
+		$sql = "INSERT INTO VehiculeSessionSurf VALUES (:noVeh, :noSes, :nbrPlacesDispo, :nbrPlanchesDispo);";
+		$sth = $dbh->prepare($sql);
+		$sth->bindParam(":noVeh", $noVeh, PDO::PARAM_STR);
+		$sth->bindParam(":noSes", $sessionSurf->noSes(), PDO::PARAM_STR);
+		$sth->bindParam(":nbrPlacesDispo", $nbrPlace, PDO::PARAM_STR);
+		$sth->bindParam(":nbrPlanchesDispo", $nbrPlanche, PDO::PARAM_STR);
+		if ($sth->execute() == 0)
+			print($dbh->errorInfo()); 	// affiche message d'érreur de la bdd
+	}
+	
+	function ajoutSession(SessionSurf $sessionSurf,$nomSpot,$noVeh,$nbrPlacesDispo,$nbrPlanchesDispo) {
+		$dbh = $this->_db;
+		
+		//ajoutSession
+		$sql = "INSERT INTO SessionSurf (nomSpot, dateAller, dateRetour, lieuDep) VALUES (:nomSpot, :dateAller, :dateRetour, :lieuDep);";
+		$sth = $dbh->prepare($sql);
+		$sth->bindParam(":nomSpot", $nomSpot, PDO::PARAM_STR);
+		$sth->bindParam(":dateAller", $sessionSurf->dateAller(), PDO::PARAM_STR);
+		$sth->bindParam(":dateRetour", $sessionSurf->dateRetour(), PDO::PARAM_STR);
+		$sth->bindParam(":lieuDep", $sessionSurf->lieuDep(), PDO::PARAM_STR);
+		if ($sth->execute() == 0) {
+			print($dbh->errorInfo()); 	// affiche message d'érreur de la bdd
+		}
+		else { 
+			$noSes = $dbh->lastInsertId();
+			
+			//ajoutPropose
+			$sql = "INSERT INTO Propose VALUES (:noMem, :noSes);";
+			$sth = $dbh->prepare($sql);
+			$sth->bindParam(":noMem", $sessionSurf->organisateur()->noMem(), PDO::PARAM_STR);
+			$sth->bindParam(":noSes", $noSes, PDO::PARAM_STR);
+			if ($sth->execute() == 0)
+				print($dbh->errorInfo());
+			else {
+				//ajoutParticipant
+				$sessionSurf->setNoSes($noSes);
+				$this->ajoutParticipant($sessionSurf, $sessionSurf->organisateur()->noMem(), false);
+			}
+			
+			//ajoutVehiculeSessionSurf
+			if ($noVeh>=0) {
+				$this->ajoutVSS($sessionSurf, $noVeh, $nbrPlacesDispo, $nbrPlanchesDispo);
+			}
+		}
+		
+		
+		
+		
 		
 	}
 	
