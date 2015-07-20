@@ -30,11 +30,53 @@ class Propose_Form{
 	}
 
 	private function validateFields(){
-		// Check dateAller
 		if(!$this->proposition)
 		{
-			$this->response_html .= '<p>Proposition Unset</p>';
+			$this->response_html .= '<p style="color:red">Proposition Unset</p>';
 			$this->response_status = 0;
+		}
+		
+		if (!isset($this->proposition['nomSpot'])) 
+		{
+			$this->response_html .= '<p style="color:red">Manque le Spot - Bizarre</p>';
+			$this->response_status = 0;
+		}
+		
+		if (!isset($this->proposition['dateAller'])) 
+		{
+			$this->response_html .= '<p style="color:red">Saisir date aller</p>';
+			$this->response_status = 0;
+		}else if (!isset($this->proposition['heureAller']))
+		{
+			$this->response_html .= '<p style="color:red">Saisir heure aller</p>';
+			$this->response_status = 0;
+		}else
+		{
+			$this->proposition['dateAller'] = date('Y-m-d G:i:s',strtotime($this->proposition['dateAller'].' '.$this->proposition['heureAller']));	
+		
+			$dateAtester = new DateTime($this->proposition['dateAller']);
+			if ($dateAtester<=date_add(date_create(), new DateInterval('P1D'))) {
+				$this->response_status = 0;
+				$this->response_html .= '<p style="color:red">Saisir une date posterieure à la date du jour</p>';
+			}
+		}
+		
+		if (!isset($this->proposition['dateRetour']) )
+		{
+			$this->response_html .= '<p style="color:red">Saisir date retour</p>';
+			$this->response_status = 0;
+		} else 
+		{
+			$this->proposition['dateRetour'] = date('Y-m-d G:i:s',strtotime($this->proposition['dateRetour']));	
+	
+			if (isset($this->proposition['dateAller'])) {
+				$dateAllerObj = new DateTime($this->proposition['dateAller']);
+				$dateRetourObj = new DateTime($this->proposition['dateRetour']);
+				if ($dateAllerObj>$dateRetourObj) {
+					$this->response_html .= '<p style="color:red">Saisir date retour postérieure à la date de départ</p>';
+					$this->response_status = 0;
+				}
+			}
 		}
 	}
 	
@@ -45,6 +87,9 @@ class Propose_Form{
 			$this->response_status = 1;
 			$this->response_html = '<p>Ok, Proposition enregistrée! RAJOUTER LE VEHICULE ET NB PLACE DISPO</p>';
 		}
+		
+		//$date = preg_replace( "/([0-9]{2})\/([0-9]{2})\/([0-9]{4})/i", "$3-$2-$1", $_POST['date']);
+		//$sql = "INSERT INTO blog SET date=now()";
 	}
 
 	function sendRequest(){

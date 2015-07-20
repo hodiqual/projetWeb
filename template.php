@@ -632,7 +632,7 @@ function ecrireJeProposeSection() {
 			<div class="span9">
 				<form id="propose-form" class="contact-form" action="#">
 					<p class="contact-name">
-						Spot: <select id="idSpot" name="idSpot">
+						Spot: <select id="nomSpot" name="nomSpot">
             			<?php
 								require_once("./modele/spot.php");
 								$spotsManager = new SpotsManager(null);
@@ -646,13 +646,40 @@ function ecrireJeProposeSection() {
 					</p>
 					<p class="contact-name">
 						Aller: <input id="propose-dateAller" type="date"
-							placeholder="Full Name" value="" name="dateAller" /> <input
-							id="propose-heureAller" type="time" placeholder="18:00" value=""
-							name="heureAller" />
+							placeholder="Full Name" value="" name="dateAller" required/> 
+							<input id="propose-heureAller" type="time" placeholder="18:00" value=""
+							name="heureAller" required/>
 					</p>
 					<p class="contact-name">
 						Retour: <input id="propose-dateRetour" type="date"
-							placeholder="Full Name" value="" name="dateRetour" />
+							placeholder="Full Name" value="" name="dateRetour" required/>
+					</p>
+					
+					<p class="contact-name">
+						Je prends mon véhicule:
+						<select id="avecVehicule" name="noVeh">
+							<option value='-1'>Je ne prends pas ma voiture</option>
+							<?php
+							$membre = $_SESSION ['Membre'];
+							foreach ( $membre->listeVehicules () as $tuture ) {
+								$titre_voiture = $tuture->marqueVeh () . ' ' . $tuture->modeleVeh ();
+								echo '<option value="' . $tuture->noVeh () . '">' . $titre_voiture . '</option>';
+							}
+							?>
+						</select>
+					</p>
+
+					<p class="contact-name">
+						Nombre de places dispo dans la voiture:
+						<input type="text" pattern="[1-9]"
+							   placeholder="Nombre de places dispo" id="nbrPlacesDispo"
+							  name="nbrPlacesDispo" size="3">
+					</p>
+					<p class="contact-name">
+						Nombre de places pour planches dispo:
+							<input type="text" pattern="[1-9]"
+							placeholder="Nombre de places pour planches dispo"
+							id="nbrPlanchesDispo" name="nbrPlanchesDispo" size="3">
 					</p>
 
 					<p class="contact-submit">

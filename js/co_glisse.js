@@ -6,13 +6,13 @@
 $(document).ready(function() {     // alert( "ready" );
      
 	console.log("DEBUG DANS READY");
-	if ( $( "#idSpot" ).length ) {
+	if ( $( "#nomSpot" ).length ) {
 		// initialisations des captures d'evenements javascript
-		$("#idSpot").get(0).selectedIndex = 0; // positionne le select sur le premier <option>
-		afficherPhoto($("#idSpot"));     // affiche la photo du premier <option>
+		$("#nomSpot").get(0).selectedIndex = 0; // positionne le select sur le premier <option>
+		afficherPhoto($("#nomSpot"));     // affiche la photo du premier <option>
 		console.log("DEBUG DANS READY-IF");
 		// associe l'event chagement d'option au rechrgt de la photo
-		$("#idSpot").change(function(){	afficherPhoto($(this));});  //$(this) permet de rÈcupÈrer en para l'objet select particulier sur lequel survient le changement	
+		$("#nomSpot").change(function(){	afficherPhoto($(this));});  //$(this) permet de rÈcupÈrer en para l'objet select particulier sur lequel survient le changement	
 	}	
 	
 	/*$(".fancybox-conn_profil").fancybox({
