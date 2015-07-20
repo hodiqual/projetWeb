@@ -226,8 +226,8 @@ function ecrireScript() {
 <?php function ecrireFermeturePage() {
 	?>
 	</body>
-		</html>	
-	<?php 
+</html>
+<?php 
 }?>
 
 <?php 
@@ -404,33 +404,41 @@ function ecrireInscriptionForm() {
 		<form id="inscription-form" class="contact-form" action="#">
 			<h4>Mes coordonnées</h4>
 			<p class="contact-name">
-				<input id="inscription_nom" type="text" placeholder="Nom" value="" name="nom" required />
+				<input id="inscription_nom" type="text" placeholder="Nom" value=""
+					name="nom" required />
 			</p>
 			<p class="contact-name">
-				<input id="inscription_prenom" type="text" placeholder="Prenom" value="" name="prenom" required />
+				<input id="inscription_prenom" type="text" placeholder="Prenom"
+					value="" name="prenom" required />
 			</p>
 			<p class="contact-email">
-				<input id="inscription_email" type="text" placeholder="Email" value="" name="email" required />
+				<input id="inscription_email" type="text" placeholder="Email"
+					value="" name="email" required />
 			</p>
 			<p class="contact-name">
-				<input id="inscription_mdp" type="password" placeholder="Mot de passe" value="" name="mdp" required />
+				<input id="inscription_mdp" type="password"
+					placeholder="Mot de passe" value="" name="mdp" required />
 			</p>
 
 			<h4>Mon véhicule</h4>
 			<p class="contact-name">
-				<input id="inscription_marqueVeh" type="text" placeholder="Marque" value="" name="marqueVeh" />
+				<input id="inscription_marqueVeh" type="text" placeholder="Marque"
+					value="" name="marqueVeh" />
 			</p>
 			<p class="contact-name">
-				<input id="inscription_modeleVeh" type="text" placeholder="Modele" value="" name="modeleVeh" />
+				<input id="inscription_modeleVeh" type="text" placeholder="Modele"
+					value="" name="modeleVeh" />
 			</p>
 			<p class="contact-name">
-				<input id="inscription_couleurVeh" type="text" placeholder="Couleur" value="" name="couleurVeh" />
+				<input id="inscription_couleurVeh" type="text" placeholder="Couleur"
+					value="" name="couleurVeh" />
 			</p>
 			<p class="contact-name">
-				Sélectionner une photo : <input id="inscription_photoVeh" type="file" value="" name="photoVeh" />
+				Sélectionner une photo : <input id="inscription_photoVeh"
+					type="file" value="" name="photoVeh" />
 			</p>
 			<p class="contact-name">
-				<select id="inscription_nbrPlaces" name="nbrPlaces" required >
+				<select id="inscription_nbrPlaces" name="nbrPlaces" required>
 					<option value="">Nombre de places</option>
 					<?php
 						for($i=1 ; $i<=100 ; $i++) {
@@ -440,7 +448,7 @@ function ecrireInscriptionForm() {
 				</select>
 			</p>
 			<p class="contact-name">
-				<select id="inscription_nbrPlanches" name="nbrPlanches" required >
+				<select id="inscription_nbrPlanches" name="nbrPlanches" required>
 					<option value="">Nombre de planches possible</option>
 					<?php
 						for($i=1 ; $i<=100 ; $i++) {
@@ -459,6 +467,143 @@ function ecrireInscriptionForm() {
 	</div>
 </div>
 
+<?php
+}
+?>
+
+<?php 
+function ecrireJeChercheSection() {
+	?>
+<!-- Je cherche Section -->
+<div id="cherche" class="page">
+	<div class="container">
+		<!-- Title Page -->
+		<div class="row">
+			<div class="span12">
+				<div class="title-page">
+					<h2 class="title">Je cherche une session</h2>
+					<h3 class="title-description">Rejoignez une équipe de glisse.</h3>
+				</div>
+			</div>
+		</div>
+		<!-- End Title Page -->
+
+		<!-- Portfolio Projects -->
+		<div class="row">
+			<div class="span3">
+				<!-- Filter -->
+				<nav id="options" class="work-nav">
+					<ul id="filters" class="option-set" data-option-key="filter">
+						<li class="type-work">Les Spots</li>
+						<li><a href="#filter" data-option-value="*" class="selected">Tous
+								les spots</a></li>
+	<?php
+	require_once ("./modele/spot.php");
+	$spotsManager = new SpotsManager ( null );
+	$spots = $spotsManager->getAll ();
+	foreach ( $spots as $spot ) {
+		echo '<li><a href="#filter" data-option-value=".' . str_replace ( ' ', '', strtolower ( $spot->nomSpot () ) ) . '">' . $spot->nomSpot () . '</a></li>';
+	}
+	?>
+	                    </ul>
+				</nav>
+				<!-- End Filter -->
+			</div>
+
+			<div class="span9">
+				<div class="row">
+					<section id="projects">
+						<ul id="thumbs">
+	                    		<?php
+	$managerSessionSurf = new SessionSurfsManager ( null );
+	$allSessionsSurfs = $managerSessionSurf->getAll ();
+	foreach ( $allSessionsSurfs as $sessionsurf ) {
+		$session_title = $sessionsurf->lieuDep () . ' -> ' . $sessionsurf->spot ()->nomSpot () . ' - ' . count ( $sessionsurf->listeParticipants () ) . ' pax';
+		$session_id = 'session-' . $sessionsurf->noSes ();
+		$session_date = 'Du ' . $sessionsurf->dateAller () . ' au ' . $sessionsurf->dateRetour ();
+		$session_class = str_replace ( ' ', '', strtolower ( $sessionsurf->spot ()->nomSpot () ) );
+		?>
+	                    				<!-- Item SessionSurf and Filter Name -->
+							<li class="item-thumbs span3 <?php echo $session_class;?>">
+	                        				<?php echo $session_title;?>	
+	                             			<!-- Fancybox - Gallery Enabled - Title - Full Image -->
+								<a class="hover-wrap fancybox-session"
+								data-fancybox-group="gallery"
+								title="<?php echo $session_title;?>"
+								href="#<?php echo $session_id;?>"> <span class="overlay-img"></span>
+									<span class="overlay-img-thumb font-icon-plus"></span>
+							</a> <!-- Thumb Image and Description --> <img
+								src="<?php echo $sessionsurf->spot()->photoSpot();?>"
+								alt="<?php echo $session_title;?>">
+
+								<div style="display: none">
+									<form id="<?php echo $session_id;?>"
+										class="session-inscription" method="post" action="">
+										<input type="hidden" name="noSes" value="3"> <input
+											type="hidden" name="choix" value="session-inscription">
+										<p id="status">Je pars ...</p>
+										<p>
+											<label for="avecPlanche">Avec ma board: </label> <input
+												type="checkbox" id="avecPlanche" name="avecPlanche"
+												size="30" />
+										</p>
+											<?php
+		if (isset ( $_SESSION ['Membre'] )) {
+			?>
+											<p>
+											<label for="avecVehicule">Je prends mon véhicule </label> <select
+												id="avecVehicule" name="noVeh">
+												<option value='-1'>Je ne prends pas ma voiture</option>
+							            			<?php
+			$membre = $_SESSION ['Membre'];
+			foreach ( $membre->listeVehicules () as $tuture ) {
+				$titre_voiture = $tuture->marqueVeh () . ' ' . $tuture->modeleVeh ();
+				echo '<option value="' . $tuture->noVeh () . '">' . $titre_voiture . '</option>';
+			}
+			?>
+							            		</select>
+										</p>
+
+										<p>
+											<label for="nbrPlacesDispo">Nombre de places dispo</label> <input
+												type="text" pattern="[1-9]"
+												placeholder="Nombre de places dispo" id="nbrPlacesDispo"
+												name="nbrPlacesDispo" size="3">
+										</p>
+										<p>
+											<label for="nbrPlanchesDispo">Nombre de places pour planches
+												dispo</label> <input type="text" pattern="[1-9]"
+												placeholder="Nombre de places pour planches dispo"
+												id="nbrPlanchesDispo" name="nbrPlanchesDispo" size="3">
+										</p>
+											<?php } ?>
+											<p>
+											<input type="submit" value="Je pars avec vous ..." />
+										</p>
+										<p>
+											<em>Leave empty so see resizing</em>
+										</p>
+									</form>
+								</div>
+									
+	                                		<?php echo $session_date;?>                       			
+	                        			</li>
+							<!-- End Item SessionSurf -->
+	                    		<?php
+	}
+	?>
+	                    	
+								
+							</ul>
+					</section>
+
+				</div>
+			</div>
+		</div>
+		<!-- End Portfolio Projects -->
+	</div>
+</div>
+<!-- End Je cherche Section -->
 <?php
 }
 ?>
