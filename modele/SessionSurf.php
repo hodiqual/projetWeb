@@ -103,6 +103,11 @@ class SessionSurf
 	{
 		$this->_dateRetour = $dateRetour;
 	}
+
+	public function setLieuDep( $lieuDep )
+	{
+		$this->_lieuDep = $lieuDep;
+	}
 	
 	public function setHeureDep( $heureDepart )
 	{
