@@ -157,7 +157,7 @@ class SessionSurfsManager extends ManagerDB {
 		$sessionSurfs=array();
 		
 		$dbh = $this->_db; 	// connexion à la bdd
-		$sql = "SELECT noSes FROM SessionSurf";
+		$sql = "SELECT noSes FROM SessionSurf WHERE dateAller > CURRENT_DATE() ORDER BY dateAller ASC;";
 		$result = $dbh->query($sql);
 		if ($result)
 		{
