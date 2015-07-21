@@ -44,8 +44,7 @@ $(document).ready(function() {     // alert( "ready" );
 		});
 	
 	$(".fancybox-session").fancybox({
-		'scrolling'		: 'yes',
-		'width'				: 400,
+		'scrolling'		: 'no',
 		'titleShow'		: false,
 		'onClosed'		: function() {
 		    $("#login_error").hide();

@@ -514,77 +514,7 @@ function ecrireJeChercheSection() {
 	$managerSessionSurf = new SessionSurfsManager ( null );
 	$allSessionsSurfs = $managerSessionSurf->getAll ();
 	foreach ( $allSessionsSurfs as $sessionsurf ) {
-		$session_title = $sessionsurf->lieuDep () . ' -> ' . $sessionsurf->spot ()->nomSpot () . ' - ' . count ( $sessionsurf->listeParticipants () ) . ' pax';
-		$session_id = 'session-' . $sessionsurf->noSes ();
-		$dateAllerObj = new DateTime($sessionsurf->dateAller());
-		$dateRetourObj = new DateTime($sessionsurf->dateRetour());
-		$session_date = 'Du ' . $dateAllerObj->format('d-m-Y H:m') . ' au ' . $dateRetourObj->format('d-m-Y');
-		$session_class = str_replace ( ' ', '', strtolower ( $sessionsurf->spot ()->nomSpot () ) );
-		?>
-	                    				<!-- Item SessionSurf and Filter Name -->
-							<li id="item-<?php echo $session_id;?>" class="item-thumbs span3 <?php echo $session_class;?>">
-	                        				<div align="center" class="font-icon-ok"> <?php echo $session_title;?>	</div>
-	                             			<!-- Fancybox - Gallery Enabled - Title - Full Image -->
-								<a class="hover-wrap fancybox-session"
-								data-fancybox-group="gallery"
-								title="<?php echo $session_title;?>"
-								href="#<?php echo $session_id;?>"> <span class="overlay-img"></span>
-									<span class="overlay-img-thumb font-icon-plus"></span>
-							</a> <!-- Thumb Image and Description --> <img
-								src="<?php echo $sessionsurf->spot()->photoSpot();?>"
-								alt="<?php echo $session_title;?>">
-
-								<div style="display: none">
-									<form id="<?php echo $session_id;?>"
-										class="session-inscription" method="post" action="">
-										<input type="hidden" name="noSes" value="<?php echo $sessionsurf->noSes();?>"> <input
-											type="hidden" name="choix" value="session-inscription">
-										<p id="status">Je pars ...</p>
-										<p>
-											<label for="avecPlanche">Avec ma board: </label> <input
-												type="checkbox" id="avecPlanche" name="avecPlanche"
-												size="30" />
-										</p>
-											<?php
-		if (isset ( $_SESSION ['Membre'] )) {
-			?>
-											<p>
-											<label for="avecVehicule">Je prends mon véhicule </label> <select
-												id="avecVehicule" name="noVeh">
-												<option value='-1'>Je ne prends pas ma voiture</option>
-							            			<?php
-			$membre = $_SESSION ['Membre'];
-			foreach ( $membre->listeVehicules () as $tuture ) {
-				$titre_voiture = $tuture->marqueVeh () . ' ' . $tuture->modeleVeh ();
-				echo '<option value="' . $tuture->noVeh () . '">' . $titre_voiture . '</option>';
-			}
-			?>
-							            		</select>
-										</p>
-
-										<p>
-											<label for="nbrPlacesDispo">Nombre de places dispo</label> <input
-												type="text" pattern="[1-9]"
-												placeholder="Nombre de places dispo" id="nbrPlacesDispo"
-												name="nbrPlacesDispo" size="3">
-										</p>
-										<p>
-											<label for="nbrPlanchesDispo">Nombre de places pour planches
-												dispo</label> <input type="text" pattern="[1-9]"
-												placeholder="Nombre de places pour planches dispo"
-												id="nbrPlanchesDispo" name="nbrPlanchesDispo" size="3">
-										</p>
-											<?php } ?>
-											<p>
-											<input type="submit" value="Je pars avec vous ..." />
-										</p>
-									</form>
-								</div>
-									
-	                                		<div align="center"><?php echo $session_date;?></div>                   			
-	                        			</li>
-							<!-- End Item SessionSurf -->
-	                    		<?php
+		ecrireJeChercheItemSessionSurf($sessionsurf);
 	}
 	?>
 	                    	
@@ -599,6 +529,83 @@ function ecrireJeChercheSection() {
 	</div>
 </div>
 <!-- End Je cherche Section -->
+<?php
+}
+?>
+
+<?php 
+function ecrireJeChercheItemSessionSurf(SessionSurf $sessionsurf)
+{
+	$session_title = $sessionsurf->lieuDep () . ' -> ' . $sessionsurf->spot ()->nomSpot () . ' - ' . count ( $sessionsurf->listeParticipants () ) . ' pax';
+	$session_id = 'session-' . $sessionsurf->noSes ();
+	$dateAllerObj = new DateTime($sessionsurf->dateAller());
+	$dateRetourObj = new DateTime($sessionsurf->dateRetour());
+	$session_date = 'Du ' . $dateAllerObj->format('d-m-Y H:m') . ' au ' . $dateRetourObj->format('d-m-Y');
+	$session_class = str_replace ( ' ', '', strtolower ( $sessionsurf->spot ()->nomSpot () ) );
+	?>
+		                    				<!-- Item SessionSurf and Filter Name -->
+								<li id="item-<?php echo $session_id;?>" class="item-thumbs span3 <?php echo $session_class;?>">
+		                        				<div align="center" class="font-icon-ok"> <?php echo $session_title;?>	</div>
+		                             			<!-- Fancybox - Gallery Enabled - Title - Full Image -->
+									<a class="hover-wrap fancybox-session"
+									data-fancybox-group="gallery"
+									title="<?php echo $session_title;?>"
+									href="#<?php echo $session_id;?>"> <span class="overlay-img"></span>
+										<span class="overlay-img-thumb font-icon-plus"></span>
+								</a> <!-- Thumb Image and Description --> <img
+									src="<?php echo $sessionsurf->spot()->photoSpot();?>"
+									alt="<?php echo $session_title;?>">
+	
+									<div style="display: none">
+										<form id="<?php echo $session_id;?>"
+											class="session-inscription" method="post" action="">
+											<input type="hidden" name="noSes" value="<?php echo $sessionsurf->noSes();?>"> <input
+												type="hidden" name="choix" value="session-inscription">
+											<p id="status">Je pars ...</p>
+											<p>
+												<label for="avecPlanche">Avec ma board: </label> <input
+													type="checkbox" id="avecPlanche" name="avecPlanche"
+													size="30" />
+											</p>
+												<?php
+			if (isset ( $_SESSION ['Membre'] )) {
+				?>
+												<p>
+												<label for="avecVehicule">Je prends mon véhicule </label> <select
+													id="avecVehicule" name="noVeh">
+													<option value='-1'>Je ne prends pas ma voiture</option>
+								            			<?php
+				$membre = $_SESSION ['Membre'];
+				foreach ( $membre->listeVehicules () as $tuture ) {
+					$titre_voiture = $tuture->marqueVeh () . ' ' . $tuture->modeleVeh ();
+					echo '<option value="' . $tuture->noVeh () . '">' . $titre_voiture . '</option>';
+				}
+				?>
+								            		</select>
+											</p>
+	
+											<p>
+												<label for="nbrPlacesDispo">Nombre de places dispo</label> <input
+													type="text" pattern="[1-9]"
+													placeholder="Nombre de places dispo" id="nbrPlacesDispo"
+													name="nbrPlacesDispo" size="3">
+											</p>
+											<p>
+												<label for="nbrPlanchesDispo">Nombre de places pour planches
+													dispo</label> <input type="text" pattern="[1-9]"
+													placeholder="Nombre de places pour planches dispo"
+													id="nbrPlanchesDispo" name="nbrPlanchesDispo" size="3">
+											</p>
+												<?php } ?>
+												<p>
+												<input type="submit" value="Je pars avec vous ..." />
+											</p>
+										</form>
+									</div>
+										
+		                                		<div align="center"><?php echo $session_date;?></div>                   			
+		                        			</li>
+								<!-- End Item SessionSurf -->
 <?php
 }
 ?>
