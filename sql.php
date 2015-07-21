@@ -27,7 +27,7 @@ class CreationBdd {
         	$str = $array[$i];
         	if ($str != '') {
              	$str .= ';';
-             	$b &= mysql_query($con, $str);  
+             	$b &= mysqli_query($con, $str);  
 	 	}  
     	}
     return $b;
