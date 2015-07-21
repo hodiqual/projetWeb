@@ -133,7 +133,7 @@ class Inscription_Form{
 
 		$response = array();
 		$response['status'] = $this->response_status;	
-		$response['html'] = '<div class="info-block"><div class="info-text">'.$this->response_html.'</div></div>';
+		$response['html'] = '<div class="info-block"><div class="info-text" style="color:red">'.$this->response_html.'</div></div>';
 		
 		echo json_encode($response);
 	}
