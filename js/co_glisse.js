@@ -88,6 +88,8 @@ $(document).ready(function() {     // alert( "ready" );
 				console.log('DEBUG propose_submit SUCCESS');
 				if(response.status){
 					$('#propose-form input').val('');
+					//$('#cherche').append(response.JeChercheSection);
+					//BRUSHED.filter();
 				}
 				
 				$('#propose-response').empty().html(response.html);

@@ -137,6 +137,17 @@ class SessionSurf
 			$this->_listeVehiculeSessionSurfs = $listeVehiculeSessionSurfs;
 		}
 	}
+	
+	public function estParticipant($membre) {
+		$result = false;
+		foreach ($this->listeParticipants() as $participant) {
+			if ($participant->noMem() == $membre->noMem()) {
+				return true;
+			}
+		};
+		
+		return $result;
+	}
 }
 
 class SessionSurfsManager extends ManagerDB {

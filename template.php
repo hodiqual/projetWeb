@@ -470,8 +470,8 @@ function ecrireInscriptionForm() {
 <?php 
 function ecrireJeChercheSection() {
 	?>
-<!-- Je cherche Section -->
-<div id="cherche" class="page">
+	<!-- Je cherche Section -->
+	<div id="cherche" class="page">
 	<div class="container">
 		<!-- Title Page -->
 		<div class="row">
@@ -516,9 +516,7 @@ function ecrireJeChercheSection() {
 	foreach ( $allSessionsSurfs as $sessionsurf ) {
 		ecrireJeChercheItemSessionSurf($sessionsurf);
 	}
-	?>
-	                    	
-								
+	?>					
 							</ul>
 					</section>
 
@@ -527,8 +525,9 @@ function ecrireJeChercheSection() {
 		</div>
 		<!-- End Portfolio Projects -->
 	</div>
-</div>
-<!-- End Je cherche Section -->
+
+	</div>
+	<!-- End Je cherche Section -->
 <?php
 }
 ?>
@@ -542,10 +541,17 @@ function ecrireJeChercheItemSessionSurf(SessionSurf $sessionsurf)
 	$dateRetourObj = new DateTime($sessionsurf->dateRetour());
 	$session_date = 'Du ' . $dateAllerObj->format('d-m-Y H:m') . ' au ' . $dateRetourObj->format('d-m-Y');
 	$session_class = str_replace ( ' ', '', strtolower ( $sessionsurf->spot ()->nomSpot () ) );
+	$tick = '';
+	if(isset($_SESSION['Membre']) && ($sessionsurf->estParticipant($_SESSION['Membre'])) )
+	{
+				$tick = "class=\"font-icon-ok\"";
+	}
+			
+	 
 	?>
 		                    				<!-- Item SessionSurf and Filter Name -->
 								<li id="item-<?php echo $session_id;?>" class="item-thumbs span3 <?php echo $session_class;?>">
-		                        				<div align="center" class="font-icon-ok"> <?php echo $session_title;?>	</div>
+		                        				<div align="center" <?php echo $tick?>> <?php echo $session_title;?>	</div>
 		                             			<!-- Fancybox - Gallery Enabled - Title - Full Image -->
 									<a class="hover-wrap fancybox-session"
 									data-fancybox-group="gallery"

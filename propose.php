@@ -1,6 +1,7 @@
 <?php
 require_once 'modele/Membre.php';
 require_once 'modele/SessionSurf.php';
+require_once 'template.php';
 session_start();
 
 header('Cache-Control: no-cache, must-revalidate');
@@ -24,6 +25,7 @@ class Propose_Form{
 		
 		$this->response_status = 1;
 		$this->response_html = '';
+		$this->response_JeChercheSection = '';
 		$this->proposition = array();
 		$this->proposition = $details;
 	}
@@ -106,11 +108,14 @@ class Propose_Form{
 		$manager = new SessionSurfsManager(null);
 		$manager->ajoutSession($sessionSurf,$this->proposition['nomSpot'],$this->proposition['noVeh'],$this->proposition['nbrPlacesDispo'],$this->proposition['nbrPlanchesDispo']);
 		$this->response_status = 1;
-		$this->response_html = '<p>Ok, Proposition enregistrée! RAJOUTER LE VEHICULE ET NB PLACE DISPO</p>';
-	
+		$this->response_html = '<p>Ok, Proposition enregistrée! Go to surf !!! Recharges la page pour voir apparaitre dans la section je cherche ta proposition</p>' ;
+		$sessionSurfEnBase = $manager->loadComplet($sessionSurf->noSes());
+		require_once 'template.php';
+		ob_start();
+		ecrireJeChercheSection();
+		$this->response_JeChercheSection = ob_get_contents();
+		ob_end_clean();
 		
-		//$date = preg_replace( "/([0-9]{2})\/([0-9]{2})\/([0-9]{4})/i", "$3-$2-$1", $_POST['date']);
-		//$sql = "INSERT INTO blog SET date=now()";
 	}
 
 	function sendRequest(){
@@ -124,11 +129,11 @@ class Propose_Form{
 		$response = array();
 		$response['status'] = $this->response_status;	
 		$response['html'] = $this->response_html;
+		$response['JeChercheSection'] = $this->response_JeChercheSection;
 		
 		echo json_encode($response);
 	}
 }
-
 
 $propose_form = new Propose_Form($_REQUEST);
 $propose_form->sendRequest();
