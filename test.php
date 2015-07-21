@@ -29,17 +29,6 @@ class CreationBddTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals("THOMAS", $membre->nom());
 		$this->assertEquals("Raimana", $membre->prenom());
 	}
-	
-	/**
-	 * @depends testCreationBdd
-	 */
-	public function testMembresManager() {
-		$membresManager = new MembresManager(null);
-		$membre = $membresManager->authentifier("thomasr@gmail.com", "iessa");
-		$this->assertEquals("THOMAS", $membre->nom());
-		$this->assertEquals("Raimana", $membre->prenom());
-	}
-	
 
 	
 	private $donneeNouvelleInscription  = array ( 'nom' => 'Wayne',
