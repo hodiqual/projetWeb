@@ -68,7 +68,7 @@ $("#inscription_submit").click(function(){
 	
 	$.ajax({
 		type: "GET",
-		url: "inscription.php",
+		url: "index.php",
 		data: fields,
 		dataType: 'json',
 		success: function(response) {

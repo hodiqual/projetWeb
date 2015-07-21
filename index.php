@@ -30,6 +30,11 @@
 			case 'deconnection':
 					require_once 'auth.php';
 					deconnect();
+				break; 
+			case 'inscription':
+					require_once 'inscription.php';
+					$insc_form = new Inscription_Form($_REQUEST);
+					$insc_form->sendRequest();
 				break;
 			default:
 				;

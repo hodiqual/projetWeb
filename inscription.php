@@ -2,11 +2,11 @@
 /*
 * Contact Form Class
 */
-session_start();
+//session_start();
 
-header('Cache-Control: no-cache, must-revalidate');
+/*header('Cache-Control: no-cache, must-revalidate');
 header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
-header('Content-type: application/json');
+header('Content-type: application/json');*/
 
 
 class Inscription_Form{
@@ -23,7 +23,7 @@ class Inscription_Form{
 		$this->nbrPlanches = (int)$details['nbrPlanches'];
 		
 		$this->response_status = 1;
-		$this->response_html = '<p>DEFAULT TODO</p>';
+		$this->response_html = '';
 	}
 	
 	private function validateEmail(){

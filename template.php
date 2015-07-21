@@ -351,6 +351,7 @@ function ecrireInscriptionForm() {
 <div class="row">
 	<div class="span9">
 		<form id="inscription-form" class="contact-form" action="#">
+			<input type="hidden" name="choix" value="inscription">
 			<h4>Mes coordonnées</h4>
 			<p class="contact-name">
 				<input id="inscription_nom" type="text" placeholder="Nom" value=""
