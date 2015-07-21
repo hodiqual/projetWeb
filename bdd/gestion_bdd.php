@@ -6,7 +6,7 @@ if (getenv('SHIPPABLE')) {
 	DEFINE ("dbUser", "shippable"); 					// login de l'utilisateur
 	DEFINE ("dbPwd", ""); 
 }
-else if (getenv('OPENSHIFT_ENV_VAR')) 
+else if (getenv('OPENSHIFT_MYSQL_DB_HOST')) 
 {
 	DEFINE ("dbHost", getenv('OPENSHIFT_MYSQL_DB_HOST') ); 				// nom du serveur
 	DEFINE ("dbName", "IESSA14_Hodiquet_Thomas");	// nom de la base

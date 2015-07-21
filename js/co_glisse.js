@@ -64,7 +64,6 @@ $(document).ready(function() {     // alert( "ready" );
 			data		: $(this).serializeArray(),
 			success: function(data) {
 				console.log("DEBUG SUCCESS STORY");
-				alert(data);
 				$.fancybox(data);
 			},
 			error:function(){ console.log("DEBUG ERROR STORY") }
