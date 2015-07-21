@@ -44,7 +44,7 @@ class CreationBddTest extends PHPUnit_Framework_TestCase {
 		$membresManager->sauvegarder($membre);
 		$this->assertNotEquals(0, $membre->noMem());
 		
-		$membreReload = $membresManager->authentifier($donneeNouvelleInscription['email'], $donneeNouvelleInscription['toto']);
+		$membreReload = $membresManager->authentifier($this->donneeNouvelleInscription['email'], $donneeNouvelleInscription['toto']);
 		$this->assertEquals($membreReload->noMem(), $membre->noMem());
 		$this->assertEquals($membreReload->nom(), $membre->nom());
 	
@@ -65,7 +65,7 @@ class CreationBddTest extends PHPUnit_Framework_TestCase {
 		$membresManager = new MembresManager(null);
 		$membre = $membresManager->authentifier("thomasr@gmail.com", "iessa");
 		$membresManager->chargerVehicule($membre);
-		$this->assertCount(1, $listeVehicules);
+		$this->assertCount(1, $membre->listeVehicules());
 		$veh = $membre->listeVehicules()[0];
 		$this->assertEquals("mercedes",$veh->marqueVeh());
 	}
@@ -75,7 +75,7 @@ class CreationBddTest extends PHPUnit_Framework_TestCase {
 	*/
 	public function testSpotsGetAll() {
 		$manager = new SpotsManager(null);
-		$this->assertCount(8,$manager->getAll());
+		$this->assertCount(6,$manager->getAll());
 	}
 	
 
@@ -86,7 +86,7 @@ class CreationBddTest extends PHPUnit_Framework_TestCase {
 		require_once 'modele/SessionSurf.php';
 		$manager = new SessionSurfsManager(null);
 		$listeSessionsSurf = $manager->getAll();
-		$this->assertCount(8,$manager->getAll());
+		$this->assertCount(0,$manager->getAll());
 	}
 	
 }
