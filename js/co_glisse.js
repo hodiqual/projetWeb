@@ -60,10 +60,11 @@ $(document).ready(function() {     // alert( "ready" );
 		$.ajax({
 			type		: "GET",
 			cache	: false,
-			url		: "index.php?choix=participe",
+			url		: "index.php",
 			data		: $(this).serializeArray(),
 			success: function(data) {
 				console.log("DEBUG SUCCESS STORY");
+				alert(data);
 				$.fancybox(data);
 			},
 			error:function(){ console.log("DEBUG ERROR STORY") }

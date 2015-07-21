@@ -1,6 +1,6 @@
 <?php
 require_once 'modele/Membre.php';
-session_start();
+//session_start();
 
 class Participe_Form{
 	function __construct($details){

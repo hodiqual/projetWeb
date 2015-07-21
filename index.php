@@ -8,13 +8,13 @@
 	
 	if (isset($_REQUEST['choix'])) {
 		switch ($_REQUEST['choix']) {
-			case 'participe':
-			require_once 'participe.php';
-				//$participe_form = new Participe_Form($_REQUEST);
-				//$participe_form->sendRequest();
+			case 'session-inscription':
+				require_once 'participe.php';
+				$participe_form = new Participe_Form($_REQUEST);
+				$participe_form->sendRequest();
+				break;
 			default:
 				;
-			break;
 		}
 	}
 	else
