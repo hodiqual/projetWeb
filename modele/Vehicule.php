@@ -103,8 +103,32 @@ class Vehicule {
 }
 
 class VehiculesManager extends ManagerDB {
-	function getById($noVeh) {
-		;
+	function sauvegarder(Vehicule $vehicule, $noMem) {
+		$dbh = $this->_db;
+
+		$sql = "INSERT INTO Vehicule (marqueVeh, modeleVeh, couleurVeh, nbrPlaces, nbrPlanches) VALUES  (:marqueVeh, :modeleVeh, :couleurVeh, :nbrPlaces, :nbrPlanches);";
+		$sth = $dbh->prepare($sql);
+		$sth->bindParam(":marqueVeh", $vehicule->marqueVeh(), PDO::PARAM_STR);
+		$sth->bindParam(":modeleVeh",$vehicule->modeleVeh(), PDO::PARAM_STR);
+		$sth->bindParam(":couleurVeh", $vehicule->couleurVeh(), PDO::PARAM_STR);
+		$sth->bindParam(":nbrPlaces",$vehicule->nbrPlaces(), PDO::PARAM_INT);
+		$sth->bindParam(":nbrPlanches",$vehicule->nbrPlanches(), PDO::PARAM_INT);
+		if ($sth->execute() == 0) {
+			print($dbh->errorInfo()); 	// affiche message d'érreur de la bdd
+		}
+		else {
+			$noVeh = $dbh->lastInsertId();
+			$vehicule->setNoVeh($noVeh);
+			
+			$sql = "INSERT INTO Possede (noVeh, noMem) VALUES  (:noVeh, :noMem);";
+			$sth = $dbh->prepare($sql);
+			$sth->bindParam(":noVeh", $noVeh, PDO::PARAM_INT);
+			$sth->bindParam(":noMem", $noMem, PDO::PARAM_INT);
+			if ($sth->execute() == 0) {
+				print($dbh->errorInfo()); 	// affiche message d'érreur de la bdd
+			}
+		}
+		
 	}
 }
 ?>

@@ -61,6 +61,32 @@ $("#connexion_submit").click(function(){
 	
 	console.log('DEBUG  connexion_submit ca marche jusqua la fin');
 	});
+
+$("#inscription_submit").click(function(){
+	console.log('DEBUG inscription_submit la ca marche');
+	
+	$auth_form = $('#inscription-form');
+	var fields = $auth_form.serialize();
+	
+	$.ajax({
+		type: "GET",
+		url: "inscription.php",
+		data: fields,
+		dataType: 'json',
+		success: function(response) {
+			console.log('DEBUG inscription_submit SUCCESS');
+			if(response.status){
+				$('#inscription-form input').val('');
+				$('#conn_profil').empty().html(response.html);
+			}
+			else
+				$('#inscription-response').empty().html(response.html);
+		}
+	});
+	
+	console.log('DEBUG  inscription_submit ca marche jusqua la fin');
+	});
+
 });
 </script>
 <?php 

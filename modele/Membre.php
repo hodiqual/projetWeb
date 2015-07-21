@@ -114,6 +114,18 @@ class MembresManager extends ManagerDB {
 		}
 	}
 	
+	function checkEmailDispo($email) {	
+		$dbh = $this->_db;
+		$sql = "SELECT * FROM Membre WHERE email = :email;";
+		$sth = $dbh->prepare($sql);
+		$sth->bindParam(":email", $email, PDO::PARAM_STR);
+		$bool = $sth->execute();
+		if ($result = $sth->fetch(PDO::FETCH_ASSOC)) // on charge les paramètres de l'utilisateur
+			return false;
+		else 
+			return true;
+	}
+	
 	function chargerVehicule(Membre $membre) {
 		$dbh = $this->_db;
 		$sql = "SELECT V.* FROM Possede AS P, Vehicule AS V  WHERE noMem = :noMem AND P.noVeh = V.noVeh;";
@@ -126,6 +138,24 @@ class MembresManager extends ManagerDB {
 			$listeVeh[] = new Vehicule($result);
 		}
 		$membre->setListeVehicules($listeVeh);
+	}
+	
+	function sauvegarder(Membre $membre) {
+		$dbh = $this->_db;
+
+		$sql = "INSERT INTO Membre (nom, prenom, mdp, email) VALUES (:nom, :prenom, :mdp, :email);";
+		$sth = $dbh->prepare($sql);
+		$sth->bindParam(":nom", $membre->nom(), PDO::PARAM_STR);
+		$sth->bindParam(":prenom",$membre->prenom(), PDO::PARAM_STR);
+		$sth->bindParam(":mdp", $membre->mdp(), PDO::PARAM_STR);
+		$sth->bindParam(":email",$membre->email(), PDO::PARAM_STR);
+		if ($sth->execute() == 0) {
+			print($dbh->errorInfo()); 	// affiche message d'érreur de la bdd
+		}
+		else {
+			$noMem = $dbh->lastInsertId();
+			$membre->setNoMem($noMem);
+		}
 	}
 }
 

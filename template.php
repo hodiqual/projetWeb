@@ -383,10 +383,6 @@ function ecrireInscriptionForm() {
 					value="" name="couleurVeh" />
 			</p>
 			<p class="contact-name">
-				Sélectionner une photo : <input id="inscription_photoVeh"
-					type="file" value="" name="photoVeh" />
-			</p>
-			<p class="contact-name">
 				<select id="inscription_nbrPlaces" name="nbrPlaces" required>
 					<option value="">Nombre de places</option>
 					<?php
