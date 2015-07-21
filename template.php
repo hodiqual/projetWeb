@@ -312,6 +312,8 @@ function ecrireConnexionForm() {
 <div class="row">
 	<div class="span9">
 		<form id="connexion-form" class="contact-form" action="#">
+			<?php if (!isset($_SESSION['Membre'])) { ?>
+			<input type="hidden" name="choix" value="connection">	
 			<p class="contact-email">
 				<input id="connexion_email" type="text" placeholder="Email" value=""
 					name="email" />
@@ -320,10 +322,20 @@ function ecrireConnexionForm() {
 				<input id="connexion_name" type="password"
 					placeholder="Mot de passe" value="" name="mdp" />
 			</p>
-
+			
 			<p class="contact-submit">
 				<a id="connexion_submit" class="button button-small" href="#">Connexion</a>
 			</p>
+				
+			<?php 
+			}else{?>
+				<input type="hidden" name="choix" value="deconnection">
+				<p class="contact-submit">
+					<a id="connexion_submit" class="button button-small" href="#">Deconnection</a>
+				</p>
+			<?php
+			}
+			?>
 
 			<div id="connexion-response"></div>
 		</form>

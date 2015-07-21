@@ -66,7 +66,7 @@ class Auth_Form{
 			$manager->chargerVehicule($membre);
 			$_SESSION['Membre'] = $membre;
 			$this->response_status = 1;
-			$this->response_html = '<p>Cool '.$membre->prenom().', prêt pour une session ...</p>';
+			$this->response_html = '<div class="info-block"><div class="info-text"><p>Identifié: Cool '.$membre->prenom().', prêt pour une session ...</p></div></div>';
 		}
 		else
 		{
@@ -94,7 +94,27 @@ class Auth_Form{
 }
 
 
-$auth_form = new Auth_Form($_REQUEST);
-$auth_form->sendRequest();
+/*$response = array();
+$response['status'] = 0;
+if ($_REQUEST['choix']=='connection')
+	$response['html'] = '<p>APPEL OK CONNECTION</p>';
+else
+	$response['html'] = '<p>APPEL OK DECONNECTION</p>';
+echo json_encode($response);*/
+
+if ($_REQUEST['choix']=='deconnection')		
+{
+			session_unset();
+			session_destroy();
+			$response['status'] = 1;
+			$response['html'] = '<div class="info-block"><div class="info-text"><p>Deconnecté...</p></div></div>';	
+			echo json_encode($response);
+}
+else
+{
+	$auth_form = new Auth_Form($_REQUEST);
+	$auth_form->sendRequest();
+}
+
 
 ?>

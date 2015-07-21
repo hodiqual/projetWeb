@@ -1,5 +1,6 @@
 <?php
 require_once 'template.php';
+session_start();
 ecrireHead();
 ?>
 
@@ -51,9 +52,10 @@ $("#connexion_submit").click(function(){
 			console.log('DEBUG propose_submit SUCCESS');
 			if(response.status){
 				$('#connexion-form input').val('');
+				$('#conn_profil').empty().html(response.html);
 			}
-			
-			$('#connexion-response').empty().html(response.html);
+			else
+				$('#connexion-response').empty().html(response.html);
 		}
 	});
 	
