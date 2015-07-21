@@ -20,7 +20,7 @@ class CreationBdd {
 		IDENTIFIED BY 'iessa' REQUIRE NONE WITH GRANT OPTION MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0
 		MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;GRANT ALL PRIVILEGES ON `iessa\_%`.* TO 'iessa'@'localhost';";
     		mysqli_query($con, $sql);
-    		$sql = file_get_contents("creation_bdd_clasNsurf.sql");
+    		$sql = file_get_contents("bdd/creation_bdd_clasNsurf.sql");
     		$array = explode(";\n", $sql);
     		$b = true;
     		for ($i=0 ; $i < count($array) ; $i++) {
