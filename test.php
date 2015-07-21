@@ -14,11 +14,11 @@ class CreationBddTest extends PHPUnit_Framework_TestCase {
 	/**
      * @depends testCreationBdd
      */
-	public function testSessionSurfsManager() {
+	/*public function testSessionSurfsManager() {
 		$sessionSurfsManager = new SessionSurfsManager(null);
 		$doc = $sessionSurfsManager->getAll();
 		$this->assertEquals(3, count($doc));
-	}
+	}*/
 	
 	/**
      * @depends testCreationBdd
