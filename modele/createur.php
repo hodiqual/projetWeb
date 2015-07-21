@@ -50,7 +50,7 @@ class Createur
 		$brice = new Createur('Brice de Nice',
 				'CASSERRRRR',
 				'K Ka Ka Kasssséééé !! Aujourd\'hui pour être fun & bigarré, frais et bien formé, il te faut savoir casser!! K Ka Ka Kasssséééé !! Une seule technique, celle de Brice : jambe gauche fléchie, droite tendue comme si tu pissais dans un bocal, t\'allonges le bras, tu pars du Nord Ouest pour arriver au Sud Est, sans toucher la Corse ! Et tu casses, et tu casses !',
-				'_include/img/profile/Brice_De_Nice.jpg',
+				'_include/img/profile/Brice_de_Nice.jpg',
 				$profilBrice
 		);
 		

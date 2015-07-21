@@ -92,6 +92,7 @@ class Participe_Form{
 		$response = array();
 		$response['status'] = $this->response_status;	
 		$response['html'] = $this->response_html;
+		$response['tick'] = '';
 		
 		//echo json_encode($response);
 		
