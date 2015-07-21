@@ -84,7 +84,7 @@ class CreationBddTest extends PHPUnit_Framework_TestCase {
 	 */
 	public function testSessionSurfGetAll() {
 		require_once 'modele/SessionSurf.php';
-		$manager = new SessionSurfManager(null);
+		$manager = new SessionSurfsManager(null);
 		$listeSessionsSurf = $manager->getAll();
 		$this->assertCount(8,$manager->getAll());
 	}
