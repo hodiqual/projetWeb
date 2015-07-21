@@ -516,26 +516,26 @@ function ecrireJeChercheItemSessionSurf(SessionSurf $sessionsurf)
 											class="session-inscription" method="post" action="">
 											<input type="hidden" name="noSes" value="<?php echo $sessionsurf->noSes();?>"> <input
 												type="hidden" name="choix" value="session-inscription">
+												<?php
+													if (isset ( $_SESSION ['Membre'] )) {
+												?>
 											<p id="status">Je pars ...</p>
 											<p>
 												<label for="avecPlanche">Avec ma board: </label> <input
 													type="checkbox" id="avecPlanche" name="avecPlanche"
 													size="30" />
 											</p>
-												<?php
-			if (isset ( $_SESSION ['Membre'] )) {
-				?>
 												<p>
 												<label for="avecVehicule">Je prends mon véhicule </label> <select
 													id="avecVehicule" name="noVeh">
 													<option value='-1'>Je ne prends pas ma voiture</option>
 								            			<?php
-				$membre = $_SESSION ['Membre'];
-				foreach ( $membre->listeVehicules () as $tuture ) {
-					$titre_voiture = $tuture->marqueVeh () . ' ' . $tuture->modeleVeh ();
-					echo '<option value="' . $tuture->noVeh () . '">' . $titre_voiture . '</option>';
-				}
-				?>
+																$membre = $_SESSION ['Membre'];
+															foreach ( $membre->listeVehicules () as $tuture ) {
+																$titre_voiture = $tuture->marqueVeh () . ' ' . $tuture->modeleVeh ();
+																echo '<option value="' . $tuture->noVeh () . '">' . $titre_voiture . '</option>';
+															}
+															?>
 								            		</select>
 											</p>
 	
@@ -551,10 +551,11 @@ function ecrireJeChercheItemSessionSurf(SessionSurf $sessionsurf)
 													placeholder="Nombre de places pour planches dispo"
 													id="nbrPlanchesDispo" name="nbrPlanchesDispo" size="3">
 											</p>
-												<?php } ?>
+												
 												<p>
 												<input type="submit" value="Je pars avec vous ..." />
 											</p>
+										<?php } ?>
 										</form>
 									</div>
 										
