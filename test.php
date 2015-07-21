@@ -39,7 +39,7 @@ class CreationBddTest extends PHPUnit_Framework_TestCase {
 	 * @depends testCreationBdd
 	 */
 	public function testNouvelleInscription() {
-		$membre = new Membre($donneeNouvelleInscription);
+		$membre = new Membre($this->donneeNouvelleInscription);
 		$membresManager = new MembresManager(null);
 		$membresManager->sauvegarder($membre);
 		$this->assertNotEquals(0, $membre->noMem());
@@ -54,9 +54,20 @@ class CreationBddTest extends PHPUnit_Framework_TestCase {
 	 * @depends testCreationBdd
 	*/
 	public function testMailDejaDansLaBase() {
-		$membre = new Membre($donneeNouvelleInscription);
 		$membresManager = new MembresManager(null);
 		$this->assertFalse($membresManager->checkEmailDispo("hodiqueta@gmail.com"));
+	}
+	
+	/**
+	 * @depends testCreationBdd
+	 */
+	public function testMembreChargerVehicule() {
+		$membresManager = new MembresManager(null);
+		$membre = $membresManager->authentifier("thomasr@gmail.com", "iessa");
+		$membresManager->chargerVehicule($membre);
+		$this->assertCount(1, $listeVehicules);
+		$veh = $membre->listeVehicules()[0];
+		$this->assertEquals("mercedes",$veh->marqueVeh());
 	}
 	
 }
