@@ -8,7 +8,8 @@ ecrireHead();
 					<div class="tabbable">
 		<ul class="nav nav-tabs" id="myTab">
 			<li class="active"><a href="#connection" data-toggle="tab">Connexion</a></li>
-			<li><a href="#profil" data-toggle="tab">Inscription</a></li>
+			<li <?php if (isset($_SESSION['Membre'])) {echo 'style="display:none"';}?>>
+				<a href="#profil" data-toggle="tab">Inscription</a></li>
 			<li style="display: none;"><a href="#deconnection" data-toggle="tab">Deconnection</a></li>
 		</ul>
 		<div class="tab-content">
@@ -21,9 +22,6 @@ ecrireHead();
 					<?php require_once 'template.php';
 					      ecrireInscriptionForm(); 
 					 ?>
-			</div>
-			<div class="tab-pane fade in" id="deconnection">
-					Formulaire de deconnection
 			</div>
 		</div>
 	</div>
