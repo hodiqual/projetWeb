@@ -28,6 +28,7 @@ function connectDb() {
 	$connecteur = new PDO("mysql:host=".dbHost.";dbname=".dbName, dbUser, dbPwd);
 	} catch (PDOException $e)
 	{
+		echo "dbHost: ".dbHost." dbName ".dbName." dbUser ".dbUser." dbPwd ".dbPwd;
 		echo "Connection à la base de données échouée : ".$e->getMessage();
 		exit;
 	}
