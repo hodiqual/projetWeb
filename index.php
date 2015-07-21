@@ -22,6 +22,15 @@
 					$propose_form = new Propose_Form($_REQUEST);
 					$propose_form->sendRequest();
 				break;
+			case 'connection':
+				require_once 'auth.php';
+					$auth_form = new Auth_Form($_REQUEST);
+					$auth_form->sendRequest();
+				break; 
+			case 'deconnection':
+					require_once 'auth.php';
+					deconnect();
+				break;
 			default:
 				;
 		}

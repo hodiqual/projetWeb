@@ -43,7 +43,7 @@ $("#connexion_submit").click(function(){
 	
 	$.ajax({
 		type: "GET",
-		url: "auth.php",
+		url: "index.php",
 		data: fields,
 		dataType: 'json',
 		success: function(response) {
