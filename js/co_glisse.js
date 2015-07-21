@@ -82,7 +82,7 @@ $(document).ready(function() {     // alert( "ready" );
 		
 		$.ajax({
 			type: "GET",
-			url: "propose.php",
+			url: "index.php",
 			data: fields,
 			dataType: 'json',
 			success: function(response) {

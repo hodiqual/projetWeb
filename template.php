@@ -621,6 +621,7 @@ function ecrireJeProposeConnecte() {
 		<div class="row">
 			<div class="span9">
 				<form id="propose-form" class="contact-form" action="#">
+					<input type="hidden" name="choix" value="je_propose">
 					<p class="contact-name">
 						Spot: <select id="nomSpot" name="nomSpot">
             			<?php
