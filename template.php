@@ -483,6 +483,11 @@ function ecrireJeChercheSection() {
 ?>
 
 <?php 
+function getTickClass() {
+	return  "class=\"font-icon-ok\"";
+}?>
+
+<?php 
 function ecrireJeChercheItemSessionSurf(SessionSurf $sessionsurf)
 {
 	$session_title = $sessionsurf->lieuDep () . ' -> ' . $sessionsurf->spot ()->nomSpot () . ' - ' . count ( $sessionsurf->listeParticipants () ) . ' pax';
@@ -517,6 +522,7 @@ function ecrireJeChercheItemSessionSurf(SessionSurf $sessionsurf)
 											class="session-inscription" method="post" action="">
 											<input type="hidden" name="noSes" value="<?php echo $sessionsurf->noSes();?>"> <input
 												type="hidden" name="choix" value="session-inscription">
+											<div id="item-form-<?php echo $session_id;?>">
 <?php
 	if (!isset ( $_SESSION ['Membre'] )) {											
 ?>
@@ -574,6 +580,7 @@ function ecrireJeChercheItemSessionSurf(SessionSurf $sessionsurf)
 <?php
 	} 
 ?>
+										</div>
 										</form>
 									</div>
 										
