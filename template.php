@@ -516,9 +516,17 @@ function ecrireJeChercheItemSessionSurf(SessionSurf $sessionsurf)
 											class="session-inscription" method="post" action="">
 											<input type="hidden" name="noSes" value="<?php echo $sessionsurf->noSes();?>"> <input
 												type="hidden" name="choix" value="session-inscription">
-												<?php
-													if (isset ( $_SESSION ['Membre'] )) {
-												?>
+<?php
+	if (!isset ( $_SESSION ['Membre'] )) {											
+?>
+											<div class="info-block">
+												<div class="info-text">
+													<p>Il faut se connecter pour participer à la session.</p>
+												</div>
+											</div>
+<?php
+	} else if (strlen($tick)<=0) {
+?>
 											<p id="status">Je pars ...</p>
 											<p>
 												<label for="avecPlanche">Avec ma board: </label> <input
@@ -555,7 +563,16 @@ function ecrireJeChercheItemSessionSurf(SessionSurf $sessionsurf)
 												<p>
 												<input type="submit" value="Je pars avec vous ..." />
 											</p>
-										<?php } ?>
+<?php } else  {											
+?>
+											<div class="info-block">
+												<div class="info-text">
+													<p>Tu es déjà inscris à cette session.</p>
+												</div>
+											</div>
+<?php
+	} 
+?>
 										</form>
 									</div>
 										
