@@ -16,18 +16,19 @@ class SQL {
 class CreationBdd {
 	public static function main() {
 		$con = mysqli_connect("127.0.0.1","shippable","","test");
-		$sql = CREATE USER 'iessa'@'localhost' IDENTIFIED BY '***';GRANT ALL PRIVILEGES ON *.* TO 'iessa'@'localhost'
+		$sql = "CREATE USER 'iessa'@'localhost' IDENTIFIED BY '***';GRANT ALL PRIVILEGES ON *.* TO 'iessa'@'localhost'
 		IDENTIFIED BY '***' REQUIRE NONE WITH GRANT OPTION MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0
-		MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;GRANT ALL PRIVILEGES ON `iessa\_%`.* TO 'iessa'@'localhost';
-    	$sql .= file_get_contents("creation_bdd_clasNsurf.sql");
-    	$array = explode(";\n", $sql);
-    	$b = true;
-    	for ($i=0 ; $i < count($array) ; $i++) {
-        $str = $array[$i];
-        if ($str != '') {
-             $str .= ';';
-             $b &= mysql_query($con, $str);  
-        }  
+		MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;GRANT ALL PRIVILEGES ON `iessa\_%`.* TO 'iessa'@'localhost';";
+    		mysql_query($con, $sql);
+    		$sql = file_get_contents("creation_bdd_clasNsurf.sql");
+    		$array = explode(";\n", $sql);
+    		$b = true;
+    		for ($i=0 ; $i < count($array) ; $i++) {
+        	$str = $array[$i];
+        	if ($str != '') {
+             	$str .= ';';
+             	$b &= mysql_query($con, $str);  
+	 	}  
     	}
     return $b;
    }
