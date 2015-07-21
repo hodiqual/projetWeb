@@ -1,5 +1,7 @@
 <?php
 require_once("sql.php");
+require_once("modele/SessionSurf.php");
+
 
 class CreationBddTest extends PHPUnit_Framework_TestCase {
 	public function testCreationBdd() {
