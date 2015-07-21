@@ -61,6 +61,15 @@ class CreationBddTest extends PHPUnit_Framework_TestCase {
 	
 	}
 	
+	/**
+	 * @depends testCreationBdd
+	*/
+	public function testMailDejaDansLaBase() {
+		$membre = new Membre($donneeNouvelleInscription);
+		$membresManager = new MembresManager(null);
+		$this->assertFalse($membresManager->checkEmailDispo("hodiqueta@gmail.com"));
+	}
+	
 }
 
 ?>
