@@ -2,11 +2,11 @@
 /*
 * Contact Form Class
 */
-session_start();
+//session_start();
 
-header('Cache-Control: no-cache, must-revalidate');
+/*header('Cache-Control: no-cache, must-revalidate');
 header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
-header('Content-type: application/json');
+header('Content-type: application/json');*/
 
 
 class Auth_Form{
@@ -91,30 +91,19 @@ class Auth_Form{
 		
 		echo json_encode($response);
 	}
+	
+	
 }
 
 
-/*$response = array();
-$response['status'] = 0;
-if ($_REQUEST['choix']=='connection')
-	$response['html'] = '<p>APPEL OK CONNECTION</p>';
-else
-	$response['html'] = '<p>APPEL OK DECONNECTION</p>';
-echo json_encode($response);*/
+function deconnect() {
+	session_unset();
+	session_destroy();
+	$response['status'] = 1;
+	$response['html'] = '<div class="info-block"><div class="info-text"><p>Deconnecté...</p></div></div>';	
+	echo json_encode($response);
+}
 
-if ($_REQUEST['choix']=='deconnection')		
-{
-			session_unset();
-			session_destroy();
-			$response['status'] = 1;
-			$response['html'] = '<div class="info-block"><div class="info-text"><p>Deconnecté...</p></div></div>';	
-			echo json_encode($response);
-}
-else
-{
-	$auth_form = new Auth_Form($_REQUEST);
-	$auth_form->sendRequest();
-}
 
 
 ?>

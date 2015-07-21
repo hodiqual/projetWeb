@@ -2,26 +2,12 @@
 require_once 'modele/Membre.php';
 require_once 'modele/SessionSurf.php';
 require_once 'template.php';
-session_start();
+//session_start();
 
-header('Cache-Control: no-cache, must-revalidate');
-header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
-header('Content-type: application/json');
-
-$admin_email = 'your@yourdomain.com'; // Your Email
-$message_min_length = 5; // Min Message Length
 
 
 class Propose_Form{
 	function __construct($details){
-		
-		/*$this->name = stripslashes($details['name']);
-		$this->email = trim($details['email']);
-		$this->subject = 'Contact from Your Website'; // Subject 
-		$this->message = stripslashes($details['message']);
-	
-		$this->email_admin = $email_admin;
-		$this->message_min_length = $message_min_length; */
 		
 		$this->response_status = 1;
 		$this->response_html = '';
@@ -135,7 +121,7 @@ class Propose_Form{
 	}
 }
 
-$propose_form = new Propose_Form($_REQUEST);
-$propose_form->sendRequest();
+//$propose_form = new Propose_Form($_REQUEST);
+//$propose_form->sendRequest();
 
 ?>

@@ -60,10 +60,11 @@ $(document).ready(function() {     // alert( "ready" );
 		$.ajax({
 			type		: "GET",
 			cache	: false,
-			url		: "participe.php",
+			url		: "index.php",
 			data		: $(this).serializeArray(),
 			success: function(data) {
 				console.log("DEBUG SUCCESS STORY");
+				alert(data);
 				$.fancybox(data);
 			},
 			error:function(){ console.log("DEBUG ERROR STORY") }
@@ -81,7 +82,7 @@ $(document).ready(function() {     // alert( "ready" );
 		
 		$.ajax({
 			type: "GET",
-			url: "propose.php",
+			url: "index.php",
 			data: fields,
 			dataType: 'json',
 			success: function(response) {

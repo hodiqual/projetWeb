@@ -1,6 +1,6 @@
 <?php
 require_once 'modele/Membre.php';
-session_start();
+//session_start();
 
 class Participe_Form{
 	function __construct($details){
@@ -102,7 +102,7 @@ class Participe_Form{
 }
 
 
-$participe_form = new Participe_Form($_REQUEST);
-$participe_form->sendRequest();
+//$participe_form = new Participe_Form($_REQUEST);
+//$participe_form->sendRequest();
 
 ?>

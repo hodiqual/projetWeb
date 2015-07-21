@@ -351,6 +351,7 @@ function ecrireInscriptionForm() {
 <div class="row">
 	<div class="span9">
 		<form id="inscription-form" class="contact-form" action="#">
+			<input type="hidden" name="choix" value="inscription">
 			<h4>Mes coordonnées</h4>
 			<p class="contact-name">
 				<input id="inscription_nom" type="text" placeholder="Nom" value=""
@@ -621,6 +622,7 @@ function ecrireJeProposeConnecte() {
 		<div class="row">
 			<div class="span9">
 				<form id="propose-form" class="contact-form" action="#">
+					<input type="hidden" name="choix" value="je_propose">
 					<p class="contact-name">
 						Spot: <select id="nomSpot" name="nomSpot">
             			<?php
