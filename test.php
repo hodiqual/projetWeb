@@ -44,7 +44,7 @@ class CreationBddTest extends PHPUnit_Framework_TestCase {
 		$membresManager->sauvegarder($membre);
 		$this->assertNotEquals(0, $membre->noMem());
 		
-		$membreReload = $membresManager->authentifier($this->donneeNouvelleInscription['email'], $this->$donneeNouvelleInscription['toto']);
+		$membreReload = $membresManager->authentifier($this->donneeNouvelleInscription['email'], $this->donneeNouvelleInscription['toto']);
 		$this->assertEquals($membreReload->noMem(), $membre->noMem());
 		$this->assertEquals($membreReload->nom(), $membre->nom());
 	
