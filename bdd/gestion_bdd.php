@@ -1,7 +1,7 @@
 <?php
 /************** FONCTIONS MODELE (gestion de la base de données) ***************/
 
-DEFINE ("dbHost", "localhost"); 				// nom du serveur
+DEFINE ("dbHost", "127.0.0.1"); 				// nom du serveur
 DEFINE ("dbName", "IESSA14_Hodiquet_Thomas");	// nom de la base
 DEFINE ("dbUser", "iessa"); 					// login de l'utilisateur
 DEFINE ("dbPwd", "iessa"); 						// pwd de l'utilisateur
