@@ -60,7 +60,7 @@ $(document).ready(function() {     // alert( "ready" );
 		$.ajax({
 			type		: "GET",
 			cache	: false,
-			url		: "participe.php",
+			url		: "index.php?choix=participe",
 			data		: $(this).serializeArray(),
 			success: function(data) {
 				console.log("DEBUG SUCCESS STORY");

@@ -139,8 +139,10 @@ class Inscription_Form{
 	}
 }
 
+/*
 $insc_form = new Inscription_Form($_REQUEST);
 $insc_form->sendRequest();
+*/
 
 
 

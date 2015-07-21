@@ -102,7 +102,7 @@ class Participe_Form{
 }
 
 
-$participe_form = new Participe_Form($_REQUEST);
-$participe_form->sendRequest();
+//$participe_form = new Participe_Form($_REQUEST);
+//$participe_form->sendRequest();
 
 ?>

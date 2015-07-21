@@ -5,15 +5,30 @@
 	include "modele/SessionSurf.php";
 	include "template.php";
 	session_start();
-	ecrireHead();
-	ecrireSlider();
-	ecrireNav();
-	ecrireJeChercheSection();
-	ecrireJeProposeSection();
-	// section CV
-	$tabCreateur = Createur::getCreateurArray();
-	ecrireCreateurs($tabCreateur);
-	// fin section CV
-
-	ecrireFooter();
+	
+	if (isset($_REQUEST['choix'])) {
+		switch ($_REQUEST['choix']) {
+			case 'participe':
+			require_once 'participe.php';
+				//$participe_form = new Participe_Form($_REQUEST);
+				//$participe_form->sendRequest();
+			default:
+				;
+			break;
+		}
+	}
+	else
+	{	
+		ecrireHead();
+		ecrireSlider();
+		ecrireNav();
+		ecrireJeChercheSection();
+		ecrireJeProposeSection();
+		// section CV
+		$tabCreateur = Createur::getCreateurArray();
+		ecrireCreateurs($tabCreateur);
+		// fin section CV
+	
+		ecrireFooter();
+	}
 ?>
